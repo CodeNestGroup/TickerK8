@@ -1,0 +1,26 @@
+{
+    "User": {
+        "login": "GUEST",
+        "offline_password": ""
+    },
+    "Interface": {
+        "day_night_mode": 1,
+        "theme": 0,
+        "font_size": 2,
+        "font_style": 0,
+        "font_letter_spacing": 2,
+        "animation_all_anim": 1,
+        "animation_login_anim": 1,
+        "animation_chart_anim": 1,
+        "animation_news_anim": 1,
+        "style_round_corner": 2
+    },
+    "Notification": {
+        "notification_alert": 1,
+        "notification_sound": 1
+    },
+    "Account": {
+        "account_type": 0
+    },
+    "last_config_date": "2024-10-10"
+}

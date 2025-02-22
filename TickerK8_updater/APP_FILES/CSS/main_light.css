@@ -1,0 +1,53 @@
+#main_widget{
+    background-color: #FAF7F0;
+}
+#main_changelog_scroll{
+    background-color: #00000000;
+    border: 0;
+}
+#main_changelog_widget{
+    background-color: #D8D2C2;
+    border: 0;
+}
+.main_changelog_button{
+    color: #FAF7F0;
+    background-color: #4A4947;
+    border: 0;
+    border-right: 2px solid #FAF7F0;
+    padding: 1em;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.6em;
+}
+.main_changelog_button:hover{
+    background-color: #444441;
+    border-color: #B17457;
+}
+
+#main_settings_widget{
+    background-color: #00000000;
+    border: 0;
+}
+
+.main_settings_buttons{
+    background-color: #4A4947;
+    border: 0;
+}
+.main_settings_buttons:hover{
+    background-color: #444441;
+    border: 2px solid #B17457;
+}
+
+#main_update_widget{
+    background-color: #D8D2C2;
+    border: 0;
+    border-top: 1px solid #4A4947;
+}
+#main_start_button{
+    color: #FAF7F0;
+    background-color: #4A4947;
+    border: 0;
+}
+#main_start_button:hover{
+    background-color: #B17457;
+}
