@@ -1,75 +1,126 @@
-#!/usr/bin/env python3
-import requests
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
+#
+# Import
+#
+
+import sys
+import os
 from PyQt5.QtWidgets import *
-from reportlab.graphics.barcode.qrencoder import QRMaskPattern
-from timezonefinder import TimezoneFinder
-import mysql.connector
+#-----------------------------------------------------------------------------------------------------------------------
 
-
-class Login_widget(QWidget):
-    def __init__(self):
-        super().__init__()
 #
 # Login Widget
 #
 
-# Login Online Widget #
-        self.Login_online_widget = QWidget(Form)
-        self.Login_online_widget_layout = QGridLayout(self.Login_online_widget)
-# Login Online Widget | Left Widget #
-        self.Login_log_widget = QWidget(self.Login_online_widget)
-        self.Login_log_widget_layout = QGridLayout(self.Login_log_widget)
-        self.Login_log_exit_button = QPushButton(self.Login_log_widget)
-        self.Login_log_login_title_label = QLabel(self.Login_log_widget)
-        self.Login_log_login_line = QLineEdit(self.Login_log_widget)
-        self.Login_log_password_line = QLineEdit(self.Login_log_widget)
-        self.Login_log_login_button = QPushButton(self.Login_log_widget)
-# Login Widget | Right Widget #
-        self.Login_news_widget = QWidget(self.Login_online_widget)
-        self.Login_news_widget_layout = QVBoxLayout(self.Login_news_widget)
-        self.Login_news_widget_text_widget = QWidget(self.Login_news_widget)
-        self.Login_news_widget_text_widget_layout = QGridLayout(self.Login_news_widget_text_widget)
-        self.Login_news_widget_text_label = QLabel(self.Login_news_widget_text_widget)
-        self.Login_news_widget_next_widget = QWidget(self.Login_news_widget_text_widget)
-        self.Login_news_widget_next_widget_layout = QGridLayout(self.Login_news_widget_next_widget)
-        self.Login_news_widget_left_button = QPushButton(self.Login_news_widget_next_widget)
-        self.Login_news_widget_right_button = QPushButton(self.Login_news_widget_next_widget)
-# Login Offline Widget #
-        self.Login_offline_widget = QWidget(Form)
-        self.Login_offline_layout = QGridLayout(self.Login_offline_widget)
-        self.Login_offline_title_label = QLabel(self.Login_offline_widget)
-        self.Login_offline_exit_button = QPushButton(self.Login_offline_widget)
-        self.Login_offline_accounts_scrollarea = QScrollArea(self.Login_offline_widget)
-        self.Login_offline_accounts_widget = QWidget(self.Login_offline_accounts_scrollarea)
-# Notification Password Widget #
-        self.Login_offline_password_widget = QWidget(Form)
-        self.Login_offline_password_layout = QGridLayout(self.Login_offline_password_widget)
-        self.Login_offline_main_password_widget = QWidget(self.Login_offline_password_widget)
-        self.Login_offline_main_password_layout = QGridLayout(self.Login_offline_main_password_widget)
-        self.Login_offline_password_exit_button = QPushButton(self.Login_offline_main_password_widget)
-        self.Login_offline_password_title_label = QLabel(self.Login_offline_main_password_widget)
-        self.Login_offline_password_line = QLineEdit(self.Login_offline_main_password_widget)
-        self.Login_offline_password_login_button = QPushButton(self.Login_offline_main_password_widget)
-# Security Widget #
-        self.Security_widget_main = QWidget(Form)
-        self.Security_widget_main_button1 = QPushButton(self.Security_widget_main)
-        self.Security_widget_main_button1_anim = QPropertyAnimation(self.Security_widget_main_button1, b"pos")
-        self.Security_widget_main_button2 = QPushButton(self.Security_widget_main)
-        self.Security_widget_main_button2_anim = QPropertyAnimation(self.Security_widget_main_button2, b"pos")
-        self.Security_widget_main_button3 = QPushButton(self.Security_widget_main)
-        self.Security_widget_main_button3_anim = QPropertyAnimation(self.Security_widget_main_button3, b"pos")
-        self.Security_widget_main_anim = QSequentialAnimationGroup(self.Security_widget_main)
-        self.Security_widget_main_start = QPushButton(self.Security_widget_main)
-        self.Security_exit = QPushButton(self.Security_widget_main)
+class Login_widget(QWidget):
+    #
+    # Init
+    #
+
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.setParent(parent)
+        self.main_layout = QGridLayout(self)
+#-----------------------------------------------------------------------------------------------------------------------
+
+        #
+        # Login Widget
+        #
+
+        self.login_widget = QWidget(self)
+        self.login_widget_layout = QGridLayout(self.login_widget)
+        self.login_title_label = QLabel(self.login_widget)
+        self.login_login_lineedit = QLineEdit(self.login_widget)
+        self.login_password_lineedit = QLineEdit(self.login_widget)
+        self.login_login_button = QPushButton(self.login_widget)
+        self.login_register_button = QPushButton(self.login_widget)
+#-----------------------------------------------------------------------------------------------------------------------
+
+        #
+        # Register Widget
+        #
+
+        self.register_widget = QWidget(self)
+        self.register_widget_layout = QGridLayout(self.register_widget)
+        self.register_title_label = QLabel(self.register_widget)
+
+        self.register_emial_subtitle_label = QLabel(self.register_widget)
+        self.register_emial_lineedit = QLineEdit(self.register_widget)
+        self.register_emial_confirm_lineedit = QLineEdit(self.register_widget)
+
+        self.register_phonenumber_subtitle_label = QLabel(self.register_widget)
+        self.register_phonenumber_combobox = QComboBox(self.register_widget)
+        self.register_phonenumber_lineedit = QLineEdit(self.register_widget)
+
+        self.register_password_subtitle_label = QLabel(self.register_widget)
+        self.register_password_lineedit = QLineEdit(self.register_widget)
+        self.register_password_confirm_lineedit = QLineEdit(self.register_widget)
+
+        self.register_register_button = QPushButton(self.register_widget)
+#-----------------------------------------------------------------------------------------------------------------------
+
+    #
+    # Setup Login Widget
+    #
+
+    def setup_login_widget(self):
+        #
+        # Import setup functions
+        #
+
+        from _01_login_setObjectName import login_setObjectName
+        from _02_login_setProperty import login_setProperty
+        from _03_login_setLayout import login_setLayout
+        from _04_login_setWidget import login_setWidget
+        from _05_login_setLineEdit import login_setLineEdit
+        from _06_login_setLabel import login_setLabel
+        from _07_login_setPushButton import login_setPushButton
+        from _08_login_setRetranslate import login_setRetranslate
+        from _09_login_setConnectButton import login_setConnectButton
+        from _10_login_setGraphics import login_setGraphics
+        from _11_login_setAnimation import login_setAnimation
+        from _12_login_setSize import login_setSize
+        #from _13_login_Scripts import
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+        #
+        # Call setup functions
+        #
+
+        # setObjectName
+        login_setObjectName(self)
+        # setProperty
+        login_setProperty(self)
+        # setLayout
+        login_setLayout(self)
+        # setWidget
+        login_setWidget(self)
+        # setLineEdit
+        login_setLineEdit(self)
+        # setLabel
+        login_setLabel(self)
+        # setPushButton
+        login_setPushButton(self)
+        # setRetranslate
+        login_setRetranslate(self)
+        # setConnectButton
+        login_setConnectButton(self)
+        # setGraphics
+        login_setGraphics(self)
+        # setAnimation
+        login_setAnimation(self)
+        # setSize
+        login_setSize(self)
 # ----------------------------------------------------------------------------------------------------------------------
 
+#
+# Main Widget
+#
 
 class Main_widget(QWidget):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, parent):
+        super().__init__(parent)
+        self.setParent(parent)
         self.screen = QApplication.primaryScreen()
         self.screen_size = self.screen.size()
         self.screen_width = self.screen_size.width()
@@ -190,12 +241,33 @@ class Main_widget(QWidget):
     def off():
         sys.exit(app.exec_())
 # ----------------------------------------------------------------------------------------------------------------------
+
+
+#
+# Window
+#
+
+class Window_Widget(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.window_layout = QVBoxLayout()
+        self.window_layout.setSpacing(0)
+        self.window_layout.setContentsMargins(0,0,0,0)
+        self.setLayout(self.window_layout)
+
+        self.login_widget = None
+        self.main_widget = None
+
+    def open_login_widget(self):
+        if not self.login_widget:
+            self.login_widget = Login_widget(self)
+            self.login_widget.setup_login_widget()
+            self.window_layout.addWidget(self.login_widget)
+            self.login_widget.show()
+
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Login_widget()
-    app.setStyleSheet(open('CSS/_main_day_css.css').read())
-    ui.setupUi(Form)
-    Form.show()
+    app = QApplication(sys.argv)
+    Window = Window_Widget()
+    Window.open_login_widget()
+    Window.show()
     sys.exit(app.exec_())

@@ -102,8 +102,8 @@ class news_main_widget(QWidget):
 # Set Icons
 #
 
-        self.next_left_button.setIcon(QIcon('./app_files/ICONS/UI/arrow-circle-left.png'))
-        self.next_right_button.setIcon(QIcon('./app_files/ICONS/UI/arrow-circle-right.png'))
+        self.next_left_button.setIcon(QIcon('../ICONS/UI/arrow-circle-left.png'))
+        self.next_right_button.setIcon(QIcon('../ICONS/UI/arrow-circle-right.png'))
 #----------------------------------------------------------------------------------------------------------------------
 
 #
@@ -290,10 +290,10 @@ class news_form_widget(QWidget):
 #
 # Set Graphics
 #
-        self.tools_day_night_button.setIcon(QIcon('./app_files/ICONS/UI/sun.png'))
-        self.tools_previous_button.setIcon(QIcon('./app_files/ICONS/UI/arrow-circle-left.png'))
-        self.tools_next_button.setIcon(QIcon('./app_files/ICONS/UI/arrow-circle-right.png'))
-        self.tools_exit_button.setIcon(QIcon('./app_files/ICONS/UI/exit-alt.png'))
+        self.tools_day_night_button.setIcon(QIcon('../ICONS/UI/sun.png'))
+        self.tools_previous_button.setIcon(QIcon('../ICONS/UI/arrow-circle-left.png'))
+        self.tools_next_button.setIcon(QIcon('../ICONS/UI/arrow-circle-right.png'))
+        self.tools_exit_button.setIcon(QIcon('../ICONS/UI/exit-alt.png'))
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -314,7 +314,7 @@ class news_form_widget(QWidget):
 #
 # Set StyleSheet
 #
-        self.setStyleSheet(open('./CSS/_main_news_form_day_css.css').read())
+        self.setStyleSheet(open('../CSS/_main_news_form_day_css.css').read())
         self.day_content()
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -451,13 +451,13 @@ class news_form_widget(QWidget):
 
     def day_night_mode(self):
         if self._day_night_mode:
-            self.tools_day_night_button.setIcon(QIcon('./app_files/ICONS/UI/moon.png'))
-            self.setStyleSheet(open('./CSS/_main_news_form_night_css.css').read())
+            self.tools_day_night_button.setIcon(QIcon('../ICONS/UI/moon.png'))
+            self.setStyleSheet(open('../CSS/_main_news_form_night_css.css').read())
             self.night_content()
             self._day_night_mode = False
         else:
-            self.tools_day_night_button.setIcon(QIcon('./app_files/ICONS/UI/sun.png'))
-            self.setStyleSheet(open('./CSS/_main_news_form_day_css.css').read())
+            self.tools_day_night_button.setIcon(QIcon('../ICONS/UI/sun.png'))
+            self.setStyleSheet(open('../CSS/_main_news_form_day_css.css').read())
             self.day_content()
             self._day_night_mode = True
 

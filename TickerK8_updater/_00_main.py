@@ -94,6 +94,19 @@ class Main_window(QWidget):
 
 #-----------------------------------------------------------------------------------------------------------------------
 
+        #
+        # File Compatibility Check
+        #
+
+        self.file_compatibility_check = file_compatibility_check()
+        self.file_compatibility_check.tickerk8_compatibility_check()
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+        #
+        # Updates
+        #
+
         self.updates_controller = updates_controller(self)
         self.updates_controller.check_updates()
         self.updates_controller.setup_changlog_scroll()
@@ -102,7 +115,7 @@ class Main_window(QWidget):
         self.open_github = lambda: open_github()
         self.open_discord = lambda: open_discord()
         self.open_TickerK8 = lambda: open_TickerK8()
-
+#-----------------------------------------------------------------------------------------------------------------------
     #
     # Setup
     #

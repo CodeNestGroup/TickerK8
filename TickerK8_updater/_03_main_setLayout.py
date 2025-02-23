@@ -49,7 +49,7 @@ def set_Layout(self):
     # Changelog Widget
     #
 
-    self.changlog_widget_layout.addWidget(self.changlog_scroll)
+    self.changlog_widget_layout.addWidget(self.changlog_scroll, 10, 20, 80, 60)
 
     self.changlog_widget_layout.setSpacing(0)
     self.changlog_widget_layout.setContentsMargins(0, 0, 0, 0)

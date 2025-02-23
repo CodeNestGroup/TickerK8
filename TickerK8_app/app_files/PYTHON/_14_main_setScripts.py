@@ -83,7 +83,7 @@ def login_offline_choose_account(self):
     layout = QVBoxLayout(self.Login_offline_accounts_widget)
     layout.setSpacing(0)
     layout.setContentsMargins(0, 0, 0, 0)
-    for files in os.listdir("./app_files/JSON/USERS"):
+    for files in os.listdir("../JSON/USERS"):
         user = json.load(open(f"./app_files/JSON/USERS/{files}"))
         button = QPushButton(f"{user['User']['login']}", self.Login_offline_accounts_widget)
         button.setProperty("class", "Notification_account_button")
@@ -260,20 +260,20 @@ def main_page_minimize(self):
 # Button Sound
 def buttons_sound():
     pygame.mixer.init()  # Initialize the mixer
-    sound_file = os.path.abspath("./app_files/SOUND/button_clicked.mp3")
+    sound_file = os.path.abspath("../SOUND/button_clicked.mp3")
     pygame.mixer.music.load(sound_file)
     pygame.mixer.music.play()
 
 # Notification Sound
 def notification_sound():
     pygame.mixer.init()  # Initialize the mixer
-    sound_file = os.path.abspath("./app_files/SOUND/notification_error.mp3")
+    sound_file = os.path.abspath("../SOUND/notification_error.mp3")
     pygame.mixer.music.load(sound_file)
     pygame.mixer.music.play()
 
 def error_sound():
     pygame.mixer.init()  # Initialize the mixer
-    sound_file = os.path.abspath("./app_files/SOUND/error.mp3")
+    sound_file = os.path.abspath("../SOUND/error.mp3")
     pygame.mixer.music.load(sound_file)
     pygame.mixer.music.play()
 
@@ -291,9 +291,9 @@ def resize_photo(photo, button):
 
 
 def main_set_news_photo(self):
-    pix_1 = QPixmap('./app_files/PICTURES/UI/earth_background.png')
-    pix_2 = QPixmap('./app_files/PICTURES/UI/market_background.png')
-    pix_3 = QPixmap('./app_files/PICTURES/UI/country_background.png')
+    pix_1 = QPixmap('../PICTURES/UI/earth_background.png')
+    pix_2 = QPixmap('../PICTURES/UI/market_background.png')
+    pix_3 = QPixmap('../PICTURES/UI/country_background.png')
 
     self.Main_down_right_button_world.setIcon(QIcon(resize_photo(pix_1, self.Main_down_right_button_world)))
     self.Main_down_right_button_world.setIconSize(self.Main_down_right_button_world.size())

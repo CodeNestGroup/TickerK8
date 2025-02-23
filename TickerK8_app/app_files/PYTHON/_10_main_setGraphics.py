@@ -35,13 +35,13 @@ def set_label_graphic(self):
 #
 
 #Main Page Top
-    self.Main_top_button_exit.setIcon(QIcon("./app_files/ICONS/UI/exit-alt.png"))
-    self.Main_top_button_window.setIcon(QIcon("./app_files/ICONS/UI/expand.png"))
-    self.Main_top_button_minimize.setIcon(QIcon("./app_files/ICONS/UI/down-left-and-up-right-to-center.png"))
-    self.Main_top_button_search_button.setIcon(QIcon("./app_files/ICONS/UI/analyse-alt.png"))
-    self.Main_top_button_settings.setIcon(QIcon("./app_files/ICONS/UI/settings-sliders.png"))
+    self.Main_top_button_exit.setIcon(QIcon("../ICONS/UI/exit-alt.png"))
+    self.Main_top_button_window.setIcon(QIcon("../ICONS/UI/expand.png"))
+    self.Main_top_button_minimize.setIcon(QIcon("../ICONS/UI/down-left-and-up-right-to-center.png"))
+    self.Main_top_button_search_button.setIcon(QIcon("../ICONS/UI/analyse-alt.png"))
+    self.Main_top_button_settings.setIcon(QIcon("../ICONS/UI/settings-sliders.png"))
 # Main panel Center right
-    self.Main_center_right_deafoult_label.setPixmap(QPixmap('./app_files/ICONS/UI/newspaper.png'))
+    self.Main_center_right_deafoult_label.setPixmap(QPixmap('../ICONS/UI/newspaper.png'))
 #Main Page Down
 #Left
     self.Main_down_left_button_news.setIcon(QIcon("./img/main_graphics/newspaper.svg"))
