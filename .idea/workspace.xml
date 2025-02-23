@@ -4,99 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f599dafb-8417-446d-8e74-30e5a48459e8" name="Changes" comment="0.0">
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_night_css.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_01_login_setObjectName.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_login_setProperty.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_login_setLayout.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_04_login_setWidget.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_login_setLineEdit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_06_login_setLabel.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_07_login_setPushButton.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_08_login_setRetranslate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_login_setConnectButton.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_10_login_setGraphics.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_11_login_setAnimation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_12_login_setSize.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_13_login_Scripts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_14_login_setCss.py" afterDir="false" />
+    <list default="true" id="f599dafb-8417-446d-8e74-30e5a48459e8" name="Changes" comment="0.1">
+      <change afterPath="$PROJECT_DIR$/TickerK8-Launcher.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TickerK8.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/API_Pexels/_01_0_0_0_API_Pexel.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/API_Pexels/_01_0_0_0_API_Pexel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/API_Pexels/_03_0_0_0_Key.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/API_Pexels/_03_0_0_0_Key.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_15_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_15_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_1_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_1_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_30_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_30_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_5_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_5_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_60_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_60_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_EMA_15_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_EMA_1_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_EMA_1_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_EMA_5_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_EMA_5_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_SMA_15_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_SMA_15_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_SMA_1_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_SMA_1_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_SMA_30_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_SMA_30_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_SMA_5_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_SMA_5_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_SMA_60_min.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_SMA_60_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_SMA_day.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_SMA_day.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_SMA_monthly.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_SMA_monthly.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_SMA_weekly.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_SMA_weekly.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_day.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_day.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_dayli.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_dayli.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_endpoint_.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_endpoint_.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_monthly.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_monthly.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_test.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_test.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/API/json/IBM/IBM_weekly.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_weekly.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/CSS/_main_day_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_day_css.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/CSS/_main_news_form_day_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_day_css.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/CSS/_main_news_form_night_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_night_css.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/CSS/_main_night_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/API/json/IBM/IBM_EMA_15_min.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_00_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_0000_app_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_01_main_setObjectName.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_01_main_setObjectName.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_02_main_setProperty.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_main_setProperty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_03_main_setLayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_main_setLayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_04_main_setWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_04_main_setWidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_05_main_setLineEdit.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_main_setLineEdit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_06_main_setLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_06_main_setLabel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_07_setPushButton.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_07_setPushButton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_08_main_setRetranslate.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_08_main_setRetranslate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_09_main_ConnectButtons.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_main_ConnectButtons.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_10_main_setGraphics.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_10_main_setGraphics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_11_main_setSize.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_11_main_setSize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_12_main_setAnimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_12_main_setAnimation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_13_Widget_Open_Close.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_13_Widget_Open_Close.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_14_main_setScripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_14_main_setScripts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/_15_CustomWidgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_15_CustomWidgets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/analyse-alt.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/analyse-alt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/arrow-circle-left.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/arrow-circle-left.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/arrow-circle-right.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/arrow-circle-right.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/down-left-and-up-right-to-center.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/down-left-and-up-right-to-center.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/drawing.svg" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/drawing.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/exit-alt.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/exit-alt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/expand.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/expand.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/ghost.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/ghost.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/logo_bluza_apka.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/logo_bluza_apka.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/logo_bluza_firma.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/logo_bluza_firma.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/moon.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/moon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/newspaper.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/newspaper.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/settings-sliders.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/settings-sliders.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/ICONS/UI/sun.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/ICONS/UI/sun.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/JSON/USERS/guest__user_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/JSON/USERS/guest__user_settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/JSON/USERS/x__user_settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/JSON/USERS/x__user_settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/PICTURES/UI/country_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PICTURES/UI/country_background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/PICTURES/UI/earth_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PICTURES/UI/earth_background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/PICTURES/UI/market_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PICTURES/UI/market_background.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/SOUND/button_clicked.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/SOUND/button_clicked.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/SOUND/error.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/SOUND/error.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/SOUND/line_edit_click.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/SOUND/line_edit_click.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/SOUND/mixkit-dry-pop-up-notification-alert-2356.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/SOUND/mixkit-dry-pop-up-notification-alert-2356.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/SOUND/mixkit-light-button-2580.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/SOUND/mixkit-light-button-2580.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/SOUND/notification_error.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/SOUND/notification_error.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/app_files/SOUND/notification_error_test_kapitan.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/SOUND/notification_error_test_kapitan.mp3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stock_bot/notatki" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_updater/_00_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/_00_main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_updater/_03_main_setLayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/_03_main_setLayout.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_updater/_13_main_Scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/_13_main_Scripts.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -231,7 +142,19 @@
       <option name="presentableId" value="Default" />
       <updated>1740258630244</updated>
     </task>
+    <task id="LOCAL-00001" summary="0.1">
+      <option name="closed" value="true" />
+      <created>1740346321574</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740346321574</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.bat" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -250,6 +173,7 @@
       <path value="$PROJECT_DIR$/TickerK8_updater" />
     </ignored-roots>
     <MESSAGE value="0.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.0" />
+    <MESSAGE value="0.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.1" />
   </component>
 </project>

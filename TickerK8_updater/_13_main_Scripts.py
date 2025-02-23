@@ -155,7 +155,15 @@ def open_github():
     QDesktopServices.openUrl(url)
 
 def open_TickerK8():
-    subprocess.Popen(['bash', os.getcwd()+'/TickerK8.sh'])
+    try:
+        subprocess.run(['bash', os.getcwd()+'/TickerK8.sh'])
+    except:
+        print('Linux Fail')
+        try:
+            subprocess.run([os.getcwd()+'/TickerK8.bat'], shell=True)
+        except:
+            print('Windows Fail')
+
 
 #
 # Controllers
