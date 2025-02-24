@@ -4,7 +4,9 @@
 
 import sys
 import os
+import json
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QRect, Qt, QMetaObject
 #-----------------------------------------------------------------------------------------------------------------------
 
 #
@@ -18,7 +20,8 @@ class Login_widget(QWidget):
 
     def __init__(self, parent):
         super().__init__(parent)
-        self.setParent(parent)
+        self.window_widget = parent
+        self.setParent(self.window_widget)
         self.main_layout = QGridLayout(self)
 #-----------------------------------------------------------------------------------------------------------------------
 
@@ -43,6 +46,9 @@ class Login_widget(QWidget):
         self.register_widget_layout = QGridLayout(self.register_widget)
         self.register_title_label = QLabel(self.register_widget)
 
+        self.register_name_subtitle_label = QLabel(self.register_widget)
+        self.register_name_lineedit = QLineEdit(self.register_widget)
+
         self.register_emial_subtitle_label = QLabel(self.register_widget)
         self.register_emial_lineedit = QLineEdit(self.register_widget)
         self.register_emial_confirm_lineedit = QLineEdit(self.register_widget)
@@ -50,6 +56,9 @@ class Login_widget(QWidget):
         self.register_phonenumber_subtitle_label = QLabel(self.register_widget)
         self.register_phonenumber_combobox = QComboBox(self.register_widget)
         self.register_phonenumber_lineedit = QLineEdit(self.register_widget)
+
+        self.register_country_subtitle_label = QLabel(self.register_widget)
+        self.register_country_combobox = QComboBox(self.register_widget)
 
         self.register_password_subtitle_label = QLabel(self.register_widget)
         self.register_password_lineedit = QLineEdit(self.register_widget)
@@ -79,8 +88,6 @@ class Login_widget(QWidget):
         from _10_login_setGraphics import login_setGraphics
         from _11_login_setAnimation import login_setAnimation
         from _12_login_setSize import login_setSize
-        #from _13_login_Scripts import
-
 #-----------------------------------------------------------------------------------------------------------------------
 
         #
@@ -111,6 +118,7 @@ class Login_widget(QWidget):
         login_setAnimation(self)
         # setSize
         login_setSize(self)
+
 # ----------------------------------------------------------------------------------------------------------------------
 
 #
@@ -120,7 +128,8 @@ class Login_widget(QWidget):
 class Main_widget(QWidget):
     def __init__(self, parent):
         super().__init__(parent)
-        self.setParent(parent)
+        self.window_widget = parent
+        self.setParent(self.window_widget)
         self.screen = QApplication.primaryScreen()
         self.screen_size = self.screen.size()
         self.screen_width = self.screen_size.width()
@@ -134,7 +143,7 @@ class Main_widget(QWidget):
 #
 # Main panel
 #
-        self.Main_widget = QWidget(Form)
+        self.Main_widget = QWidget(self.window_widget)
         self.Main_widget_layout = QGridLayout(self.Main_widget)
 # Main panel Top Widget
         self.Main_top_widget = QWidget(self.Main_widget)
@@ -177,7 +186,7 @@ class Main_widget(QWidget):
         self.Main_down_right_label_country = QLabel(self.Main_down_right_button_country)
 # ----------------------------------------------------------------------------------------------------------------------
 
-    def setupUi(self, form):
+    def setup_main_widget(self):
         from _01_main_setObjectName import set_object_name
         from _02_main_setProperty import set_Property_objects
         from _03_main_setLayout import add_widget_to_layout, set_layout_properties, set_layout_columnstretch, set_Layout_to_Widget
@@ -190,16 +199,15 @@ class Main_widget(QWidget):
         from _10_main_setGraphics import set_label_graphic
         from _11_main_setSize import set_size_objects
         from _12_main_setAnimation import set_Add_Anim, set_Duration, set_curve
-        from _14_main_setScripts import startup, news_controller
+        from _14_main_setScripts import news_controller
 
 
-        self.window = form
-        self.window.setObjectName("Form")
+        self.window_widget.setObjectName("Form")
         # Ustaw nowy rozmiar okna
-        self.window.resize(self.new_width, self.new_height)
-        self.window.setWindowFlag(Qt.FramelessWindowHint)
-        self.window.setWindowTitle("STOCK BOT")
-        self.news_controller = news_controller(form, self)
+        #self.window_widget.resize(self.new_width, self.new_height)
+        self.window_widget.setWindowFlag(Qt.FramelessWindowHint)
+        self.window_widget.setWindowTitle("STOCK BOT")
+        self.news_controller = news_controller(self.window_widget, self)
         #Set ObjectName
         set_object_name(self)
         #Set Property
@@ -233,9 +241,6 @@ class Main_widget(QWidget):
         set_Add_Anim(self)
         set_Duration(self)
         set_curve(self)
-        # Set Combo Box
-        startup(self)
-        QtCore.QMetaObject.connectSlotsByName(self.window)
 
     @staticmethod
     def off():
@@ -250,24 +255,51 @@ class Main_widget(QWidget):
 class Window_Widget(QWidget):
     def __init__(self):
         super().__init__()
-        self.window_layout = QVBoxLayout()
+        self.screen_main = QApplication.primaryScreen()
+        self.screen_main_size = self.screen_main.size()
+        self.setGeometry(QRect(self.screen_main_size.width()//4,
+                               self.screen_main_size.height()//4,
+                               self.screen_main_size.width()//2,
+                               self.screen_main_size.height()//2))
+        self.setObjectName('Window')
+
+        self.window_layout = QVBoxLayout(self)
         self.window_layout.setSpacing(0)
         self.window_layout.setContentsMargins(0,0,0,0)
         self.setLayout(self.window_layout)
 
         self.login_widget = None
         self.main_widget = None
+        self.app_path = os.getcwd()
 
-    def open_login_widget(self):
+    # Login Widget
+    def create_destroy_login_widget(self):
         if not self.login_widget:
             self.login_widget = Login_widget(self)
             self.login_widget.setup_login_widget()
             self.window_layout.addWidget(self.login_widget)
             self.login_widget.show()
+        else:
+            self.login_widget.deleteLater()
+
+    # Main Widget
+    def create_destroy_main_widget(self):
+        if not self.main_widget:
+            self.main_widget = Main_widget(self)
+            self.main_widget.setup_main_widget()
+            self.window_layout.addWidget(self.main_widget)
+            self.main_widget.show()
+        else:
+            self.main_widget.deleteLater()
+
+    def set_Css(self):
+        _json_file = json.load(open(self.app_path+'/TickerK8_app/app_files/JSON/CONFIG/_00_main_config.json'))
+        self.setStyleSheet(open(self.app_path+_json_file['__CSS__']).read())
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     Window = Window_Widget()
-    Window.open_login_widget()
+    Window.create_destroy_login_widget()
+    Window.set_Css()
     Window.show()
     sys.exit(app.exec_())

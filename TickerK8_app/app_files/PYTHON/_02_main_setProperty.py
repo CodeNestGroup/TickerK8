@@ -1,28 +1,5 @@
 def set_Property_objects(self):
 #
-# Login
-#
-
-# Login Widget
-    self.Login_online_widget.setProperty("class", "Login_widget")
-    self.Login_offline_widget.setProperty("class", "Login_widget")
-    self.Login_log_exit_button.setProperty("class", "Login_exit_button")
-    self.Login_offline_exit_button.setProperty("class", "Login_exit_button")
-    self.Login_log_login_title_label.setProperty("class", "Login_title")
-    self.Login_offline_title_label.setProperty("class", "Login_title")
-    self.Login_log_login_line.setProperty("class", "Login_line_edit")
-    self.Login_log_password_line.setProperty("class", "Login_line_edit")
-    self.Login_news_widget_left_button.setProperty("class", "Login_news_button")
-    self.Login_news_widget_right_button.setProperty("class", "Login_news_button")
-#
-# Security
-#
-    self.Security_widget_main_button1.setProperty("class", "Login_security_button")
-    self.Security_widget_main_button2.setProperty("class", "Login_security_button")
-    self.Security_widget_main_button3.setProperty("class", "Login_security_button")
-# ----------------------------------------------------------------------------------------------------------------------
-
-#
 # Login Widget
 #
 

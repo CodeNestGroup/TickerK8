@@ -5,10 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f599dafb-8417-446d-8e74-30e5a48459e8" name="Changes" comment="0.1">
-      <change afterPath="$PROJECT_DIR$/TickerK8-Launcher.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TickerK8.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_00_main_light.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TickerK8_app/app_files/JSON/CONFIG/_00_main_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_updater/_13_main_Scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/_13_main_Scripts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_0000_app_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_0000_app_base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_01_login_setObjectName.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_01_login_setObjectName.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_01_main_setObjectName.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_01_main_setObjectName.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_login_setProperty.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_login_setProperty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_main_setProperty.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_main_setProperty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_login_setLayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_login_setLayout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_main_setLayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_main_setLayout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_04_main_setWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_04_main_setWidget.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_login_setLineEdit.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_login_setLineEdit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_main_setLineEdit.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_main_setLineEdit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_06_login_setLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_06_login_setLabel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_06_main_setLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_06_main_setLabel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_08_login_setRetranslate.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_08_login_setRetranslate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_08_main_setRetranslate.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_08_main_setRetranslate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_login_setConnectButton.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_login_setConnectButton.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_main_ConnectButtons.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_main_ConnectButtons.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_10_main_setGraphics.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_10_main_setGraphics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_11_main_setSize.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_11_main_setSize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_12_login_setSize.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_12_login_setSize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_13_login_Scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_13_login_Scripts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_14_login_setCss.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_14_main_setScripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_14_main_setScripts.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,21 +71,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.TickerK8-Launcher.executor&quot;: &quot;Run&quot;,
-    &quot;Python._00_main.executor&quot;: &quot;Debug&quot;,
-    &quot;Python._12_main_setCss.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Shell Script.TickerK8-Launcher.sh.executor&quot;: &quot;Run&quot;,
-    &quot;Shell Script.TickerK8.sh.executor&quot;: &quot;Run&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/admin/PycharmProjects/TickerK8&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.TickerK8-Launcher.executor": "Run",
+    "Python._00_main.executor": "Debug",
+    "Python._12_main_setCss.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Shell Script.TickerK8-Launcher.sh.executor": "Run",
+    "Shell Script.TickerK8.sh.executor": "Run",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "/home/admin/PycharmProjects/TickerK8",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Stock_bot/app_files" />
@@ -72,7 +99,7 @@
       <recent name="$PROJECT_DIR$/TickerK8_updater/.venv" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.TickerK8-Launcher.sh">
+  <component name="RunManager" selected="Shell Script.TickerK8.sh">
     <configuration name="TickerK8-Launcher" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TickerK8" />
       <option name="ENV_FILES" value="" />
@@ -127,11 +154,17 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Shell Script.TickerK8-Launcher.sh" />
         <item itemvalue="Shell Script.TickerK8.sh" />
-        <item itemvalue="Python.TickerK8-Launcher" />
+        <item itemvalue="Shell Script.TickerK8-Launcher.sh" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-WS-243.22562.222" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -141,6 +174,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1740258630244</updated>
+      <workItem from="1740405545786" duration="1839000" />
+      <workItem from="1740410514929" duration="1060000" />
     </task>
     <task id="LOCAL-00001" summary="0.1">
       <option name="closed" value="true" />
@@ -150,8 +185,19 @@
       <option name="project" value="LOCAL" />
       <updated>1740346321574</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="0.1">
+      <option name="closed" value="true" />
+      <created>1740347839623</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740347839623</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.bat" />

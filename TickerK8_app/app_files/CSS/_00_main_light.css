@@ -1,0 +1,69 @@
+#Window{
+    background-color: #FAF7F0;
+}
+#login_widget{
+    background-color: #D8D2C2;
+    border-radius: 1em;
+}
+#login_title_label{
+    color: #4A4947;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 0.5em;
+}
+.login_lineedit{
+    color: #4A4947;
+    background-color: #FAF7F0;
+    border: 2px solid #FAF7F0;
+    border-radius: 0.7em;
+    padding: 1em;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+}
+#login_login_button{
+    color: #4A4947;
+    background-color: #FAF7F0;
+    border: 0;
+    border-radius: 1em;
+    padding: 1em;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5em;
+}
+#login_login_button:hover{
+    color: #FAF7F0;
+    background-color: #4A4947;
+}
+#login_register_button{
+    color: #4A4947;
+    background-color: #FAF7F0;
+    border: 0;
+    border-radius: 1em;
+    padding: 1em;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5em;
+}
+#login_register_button:hover{
+    color: #FAF7F0;
+    background-color: #4A4947;
+}
+#register_widget{
+
+}
+#register_title_label{
+
+}
+.register_subtitle_label{
+
+}
+.register_lineedit{
+
+}
+#register_phonenumber_combobox{
+
+}
+#register_register_button{
+
+}

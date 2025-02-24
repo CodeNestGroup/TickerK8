@@ -23,4 +23,5 @@ def login_setLabel(self):
     # Register Widget
     #
 
+    self.register_title_label.setAlignment(Qt.AlignCenter)
 #-----------------------------------------------------------------------------------------------------------------------

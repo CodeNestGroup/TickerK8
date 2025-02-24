@@ -35,6 +35,8 @@ def login_setSize(self):
     self.register_phonenumber_subtitle_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
     self.register_phonenumber_combobox.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
     self.register_phonenumber_lineedit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+    self.register_country_subtitle_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+    self.register_country_combobox.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
     self.register_password_subtitle_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
     self.register_password_lineedit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
     self.register_password_confirm_lineedit.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)

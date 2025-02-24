@@ -1,54 +1,5 @@
 def set_object_name(self):
 #
-# Login Online Widget #
-#
-# Login Online Widget #
-    self.Login_online_widget.setObjectName("Login_online_widget")
-# Login
-    self.Login_log_widget.setObjectName("Login_log_widget")
-    self.Login_log_exit_button.setObjectName("Login_log_exit_button")
-    self.Login_log_login_title_label.setObjectName("Login_log_login_title_label")
-    self.Login_log_login_line.setObjectName("Login_log_login_line")
-    self.Login_log_password_line.setObjectName("Login_log_password_line")
-    self.Login_log_login_button.setObjectName("Login_log_login_button")
-# News
-    self.Login_news_widget.setObjectName("Login_news_widget")
-    self.Login_news_widget_text_widget.setObjectName("Login_news_widget_text_widget")
-    self.Login_news_widget_text_label.setObjectName("Login_news_widget_text_label")
-    self.Login_news_widget_next_widget.setObjectName("Login_news_widget_next_widget")
-    self.Login_news_widget_left_button.setObjectName("Login_news_widget_left_button")
-    self.Login_news_widget_right_button.setObjectName("Login_news_widget_right_button")
-#
-# Login Offline Widget
-#
-# Login Offline Widget #
-    self.Login_offline_widget.setObjectName("Login_offline_widget")
-    self.Login_offline_title_label.setObjectName("Login_offline_title_label")
-    self.Login_offline_exit_button.setObjectName("Login_offline_exit_button")
-    self.Login_offline_accounts_scrollarea.setObjectName("Login_offline_accounts_scrollarea")
-    self.Login_offline_accounts_widget.setObjectName("Login_offline_accounts_widget")
-    self.Login_offline_password_widget.setObjectName("Login_offline_password_widget")
-    self.Login_offline_main_password_widget.setObjectName("Login_offline_main_password_widget")
-    self.Login_offline_password_exit_button.setObjectName("Login_offline_password_exit_button")
-    self.Login_offline_password_title_label.setObjectName("Login_offline_password_title_label")
-    self.Login_offline_password_line.setObjectName("Login_offline_password_line")
-    self.Login_offline_password_login_button.setObjectName("Login_offline_password_login_button")
-#
-# Security Widget
-#
-    self.Security_widget_main.setObjectName("Security_widget_main")
-    self.Security_widget_main_button1.setObjectName("Security_widget_main_button1")
-    self.Security_widget_main_button1_anim.setObjectName("Security_widget_main_button1_anim")
-    self.Security_widget_main_button2.setObjectName("Security_widget_main_button2")
-    self.Security_widget_main_button2_anim.setObjectName("Security_widget_main_button2_anim")
-    self.Security_widget_main_button3.setObjectName("Security_widget_main_button3")
-    self.Security_widget_main_button3_anim.setObjectName("Security_widget_main_button3_anim")
-    self.Security_widget_main_anim.setObjectName("Security_widget_main_anim")
-    self.Security_widget_main_start.setObjectName("Security_widget_main_start")
-    self.Security_exit.setObjectName("Security_exit")
-# ----------------------------------------------------------------------------------------------------------------------
-
-#
 # Main Panel
 #
     self.Main_widget.setObjectName("Main_widget")

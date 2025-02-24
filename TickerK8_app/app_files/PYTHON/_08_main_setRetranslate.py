@@ -1,27 +1,5 @@
 def retranslate(self):
 #
-# Login Panel
-#
-
-# Login Online Widget #
-    self.Login_log_login_title_label.setText("STOCK BOT")
-    self.Login_log_login_button.setText("LOGIN")
-
-# Login Offline Widget #
-    self.Login_offline_title_label.setText("STOCK BOT")
-    self.Login_offline_password_title_label.setText("PASSWORD")
-    self.Login_offline_password_login_button.setText("LOGIN")
-# ----------------------------------------------------------------------------------------------------------------------
-
-#
-# Security Widget
-#
-
-# Security Widget #
-    self.Security_widget_main_start.setText("START")
-# ----------------------------------------------------------------------------------------------------------------------
-
-#
 # Main Panel
 #
 

@@ -2,21 +2,6 @@ from PyQt5.QtCore import Qt
 
 def set_Align(self):
 #
-# Login
-#
-
-# Login Online Widget #
-    self.Login_log_login_title_label.setAlignment(Qt.AlignCenter)
-    self.Login_log_login_line.setAlignment(Qt.AlignCenter)
-    self.Login_log_password_line.setAlignment(Qt.AlignCenter)
-
-# Login Offline Widget #
-    self.Login_offline_title_label.setAlignment(Qt.AlignCenter)
-    self.Login_offline_password_title_label.setAlignment(Qt.AlignCenter)
-    self.Login_offline_password_line.setAlignment(Qt.AlignCenter)
-# ----------------------------------------------------------------------------------------------------------------------
-
-#
 # Main Widget
 #
 
