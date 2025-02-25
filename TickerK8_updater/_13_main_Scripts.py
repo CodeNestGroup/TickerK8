@@ -126,14 +126,14 @@ class updates_controller:
             # Set Hidden
             #
 
-            self.main_self.main_widget.setHidden(True)
+            self.main_self.app_widget.setHidden(True)
             self.main_self.changlog_widget.setHidden(False)
 #-----------------------------------------------------------------------------------------------------------------------
 
     def close_changlog(self):
-        if not self.main_self.changlog_widget.isHidden() and self.main_self.main_widget.isHidden():
+        if not self.main_self.changlog_widget.isHidden() and self.main_self.app_widget.isHidden():
             self.main_self.changlog_widget.setHidden(True)
-            self.main_self.main_widget.setHidden(False)
+            self.main_self.app_widget.setHidden(False)
             self.changlog_scroll_widget.deleteLater()
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -155,7 +155,15 @@ def open_github():
     QDesktopServices.openUrl(url)
 
 def open_TickerK8():
-    subprocess.Popen(['bash', os.getcwd()+'/TickerK8.sh'])
+    try:
+        subprocess.run(['bash', os.getcwd()+'/TickerK8.sh'])
+    except:
+        print('Linux Fail')
+        try:
+            subprocess.run([os.getcwd()+'/TickerK8.bat'], shell=True)
+        except:
+            print('Windows Fail')
+
 
 #
 # Controllers

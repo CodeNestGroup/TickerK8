@@ -3,7 +3,7 @@ def set_ObjectName(self):
     # Main Widget
     #
 
-    self.main_widget.setObjectName('main_widget')
+    self.app_widget.setObjectName('main_widget')
     self.main_changelog_scroll.setObjectName('main_changelog_scroll')
     self.main_settings_widget.setObjectName('main_settings_widget')
     self.main_settings_open_button.setObjectName('main_settings_open_button')

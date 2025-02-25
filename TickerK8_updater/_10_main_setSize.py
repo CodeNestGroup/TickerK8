@@ -18,7 +18,7 @@ def set_Size(self):
     #
     # Main Widget
     #
-    self.main_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+    self.app_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
     self.main_changelog_scroll.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
     self.main_settings_widget.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
     self.main_settings_open_button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
@@ -45,5 +45,3 @@ def set_Size(self):
     #self.settings_menu_scroll.setFixedSize(QSize())
 
 # -----------------------------------------------------------------------------------------------------------------------
-
-    pass
