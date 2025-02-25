@@ -6,18 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f599dafb-8417-446d-8e74-30e5a48459e8" name="Changes" comment="0.3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_00_main_light.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_00_main_light.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_day_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_day_css.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_night_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_night_css.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_0000_app_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_0000_app_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_main_setProperty.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_main_setProperty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_login_setConnectButton.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_login_setConnectButton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_main_ConnectButtons.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_main_ConnectButtons.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_11_main_setSize.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_11_main_setSize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_13_login_Scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_13_login_Scripts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_14_main_setScripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_14_main_setScripts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_15_CustomWidgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_15_CustomWidgets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_updater/_10_main_setSize.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/_10_main_setSize.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +75,7 @@
       <recent name="$PROJECT_DIR$/TickerK8_updater/.venv" />
     </key>
   </component>
-  <component name="RunManager" selected="Shell Script.TickerK8.sh">
+  <component name="RunManager" selected="Shell Script.TickerK8-Launcher.sh">
     <configuration name="TickerK8-Launcher" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TickerK8" />
       <option name="ENV_FILES" value="" />
@@ -142,8 +130,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Shell Script.TickerK8.sh" />
         <item itemvalue="Shell Script.TickerK8-Launcher.sh" />
+        <item itemvalue="Shell Script.TickerK8.sh" />
       </list>
     </recent_temporary>
   </component>
@@ -200,7 +188,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740495379002</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="0.3">
+      <option name="closed" value="true" />
+      <created>1740520746293</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1740520746293</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

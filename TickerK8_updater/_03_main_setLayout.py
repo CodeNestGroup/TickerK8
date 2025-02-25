@@ -3,7 +3,7 @@ def set_Layout(self):
     # Self
     #
 
-    self.layout.addWidget(self.app_widget)
+    self.layout.addWidget(self.main_widget)
     self.layout.addWidget(self.changlog_widget)
     self.layout.addWidget(self.settings_widget)
 
@@ -28,7 +28,7 @@ def set_Layout(self):
         self.main_widget_layout.setRowStretch(i, 1)
         self.main_widget_layout.setColumnStretch(i, 1)
 
-    self.app_widget.setLayout(self.main_widget_layout)
+    self.main_widget.setLayout(self.main_widget_layout)
 
     # Main Settings
     self.main_settings_widget_layout.addWidget(self.main_settings_open_button, 0, 0, 50, 50)
