@@ -1,15 +1,16 @@
+#
+# Import
+#
+
 import json
 import os
-import time
-from datetime import datetime
-from webbrowser import open_new
 
 from PyQt5.QtCore import QSize, QRect, QPoint, QParallelAnimationGroup, QSequentialAnimationGroup, QPropertyAnimation, QTimer, Qt, QUrl, QThread, pyqtSignal
 from PyQt5.QtGui import QIcon, QPixmap
 import pygame
-import random
 
 from PyQt5.QtWidgets import QVBoxLayout, QPushButton
+#-----------------------------------------------------------------------------------------------------------------------
 
 def main_page_window(self):
     if self.fullscreen:
@@ -66,16 +67,16 @@ def main_set_news_photo(self):
     pix_2 = QPixmap('../PICTURES/UI/market_background.png')
     pix_3 = QPixmap('../PICTURES/UI/country_background.png')
 
-    self.Main_down_right_button_world.setIcon(QIcon(resize_photo(pix_1, self.Main_down_right_button_world)))
-    self.Main_down_right_button_world.setIconSize(self.Main_down_right_button_world.size())
-    self.Main_down_right_button_market.setIcon(QIcon(resize_photo(pix_2, self.Main_down_right_button_market)))
-    self.Main_down_right_button_market.setIconSize(self.Main_down_right_button_market.size())
-    self.Main_down_right_button_country.setIcon(QIcon(resize_photo(pix_3, self.Main_down_right_button_country)))
-    self.Main_down_right_button_country.setIconSize(self.Main_down_right_button_country.size())
+    self.main_down_right_button_world.setIcon(QIcon(resize_photo(pix_1, self.main_down_right_button_world)))
+    self.main_down_right_button_world.setIconSize(self.main_down_right_button_world.size())
+    self.main_down_right_button_market.setIcon(QIcon(resize_photo(pix_2, self.main_down_right_button_market)))
+    self.main_down_right_button_market.setIconSize(self.main_down_right_button_market.size())
+    self.main_down_right_button_country.setIcon(QIcon(resize_photo(pix_3, self.main_down_right_button_country)))
+    self.main_down_right_button_country.setIconSize(self.main_down_right_button_country.size())
 
-    self.Main_down_right_label_world.setFixedSize(self.Main_down_right_button_country.size())
-    self.Main_down_right_label_market.setFixedSize(self.Main_down_right_button_country.size())
-    self.Main_down_right_label_country.setFixedSize(self.Main_down_right_button_country.size())
+    self.main_down_right_label_world.setFixedSize(self.main_down_right_button_country.size())
+    self.main_down_right_label_market.setFixedSize(self.main_down_right_button_country.size())
+    self.main_down_right_label_country.setFixedSize(self.main_down_right_button_country.size())
 
 def animate_icon(animation, target_size):
     #
@@ -109,6 +110,7 @@ class news_controller(object):
         return _result
 
     def news_main_create_widget(self):
-        self._news_main_widget = news_main_widget(self.form, self.main_self.Main_center_right_widget, self.get_news_main())
-        self.main_self.Main_center_right_widget_layout.addWidget(self._news_main_widget)
-        self.main_self.Main_center_right_deafoult_label.setHidden(True)
+        #self._news_main_widget = news_main_widget(self.form, self.main_self.Main_center_right_widget, self.get_news_main())
+        #self.main_self.Main_center_right_widget_layout.addWidget(self._news_main_widget)
+        #self.main_self.Main_center_right_deafoult_label.setHidden(True)
+        pass

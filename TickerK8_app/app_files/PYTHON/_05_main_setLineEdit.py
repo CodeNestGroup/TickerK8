@@ -1,7 +1,12 @@
+#
+# Import
+#
+
 from PyQt5.QtWidgets import QLineEdit
+#-----------------------------------------------------------------------------------------------------------------------
 
-def set_Place_Holder(self):
-    pass
-
-def set_Password(self):
+#
+# set lineedit
+#
+def main_setLineEdit(self):
     pass

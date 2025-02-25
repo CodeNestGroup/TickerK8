@@ -32,13 +32,14 @@ def login(self):
        failed_login(self)
 
     _connect.close()
+#-----------------------------------------------------------------------------------------------------------------------
 
 # Success Login
 def success_login(self):
     _json_file = json.load(open(os.getcwd() + '/TickerK8_app/app_files/JSON/CONFIG/_00_main_config.json'))
     self.deleteLater()
     self.window_widget.showFullScreen()
-    self.window_widget.create_destroy_main_widget()
+    self.window_widget.create_destroy_app_widget()
 
 
 # Failed Login
@@ -48,6 +49,22 @@ def failed_login(self):
     self.login_password_lineedit.setStyleSheet('border-color: #c43025;')
     self.login_password_lineedit.setPlaceholderText('WRONG!!!')
 
+
+#-----------------------------------------------------------------------------------------------------------------------
+
+#
+# Register
+#
+
+# Try Register
+def register(self):
+    _json_file = json.load(open(os.getcwd() + '/TickerK8_app/app_files/JSON/CONFIG/_00_main_config.json'))
+    _connect = mysql.connector.connect(
+        host=_json_file['__SQL__']['_hsot_'],
+        user = _json_file['__SQL__']['_user_'],
+        password = _json_file['__SQL__']['_password_'],
+        database = _json_file['__SQL__']['_database_']
+    )
 
 #-----------------------------------------------------------------------------------------------------------------------
 

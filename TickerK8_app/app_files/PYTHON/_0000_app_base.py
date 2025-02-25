@@ -125,122 +125,125 @@ class Login_widget(QWidget):
 # Main Widget
 #
 
-class Main_widget(QWidget):
+class App_widget(QWidget):
+    #
+    # Init
+    #
     def __init__(self, parent):
         super().__init__(parent)
         self.window_widget = parent
         self.setParent(self.window_widget)
-        self.screen = QApplication.primaryScreen()
-        self.screen_size = self.screen.size()
-        self.screen_width = self.screen_size.width()
-        self.screen_height = self.screen_size.height()
-        self.new_width = int(self.screen_width * 0.3854166666666667)
-        self.new_height = int(self.screen_height * 0.4916666666666667)
 
         self.Mode = False
         self.fullscreen = False
         self.window = None
-#
-# Main panel
-#
-        self.Main_widget = QWidget(self.window_widget)
-        self.Main_widget_layout = QGridLayout(self.Main_widget)
-# Main panel Top Widget
-        self.Main_top_widget = QWidget(self.Main_widget)
-        self.Main_top_widget_layout = QGridLayout(self.Main_top_widget)
-        self.Main_top_button_exit = QPushButton(self.Main_top_widget)
-        self.Main_top_button_window = QPushButton(self.Main_top_widget)
-        self.Main_top_button_minimize = QPushButton(self.Main_top_widget)
-        self.Main_top_button_search_button = QPushButton(self.Main_top_widget)
-        self.Main_top_button_settings = QPushButton(self.Main_top_widget)
-# Main panel Center Widget
-        self.Main_center_widget = QWidget(self.Main_widget)
-        self.Main_center_widget_layout = QGridLayout(self.Main_center_widget)
-# Main panel Center Left
-        self.Main_center_left_label = QLabel(self.Main_center_widget)
-# Main panel Center center
-        self.Main_center_center_label = QLabel(self.Main_center_widget)
-# Main panel Center right
-        self.Main_center_right_widget = QWidget(self.Main_center_widget)
-        self.Main_center_right_widget_layout = QVBoxLayout(self.Main_center_right_widget)
-        self.Main_center_right_deafoult_label = QLabel(self.Main_center_right_widget)
-# Main panel down Widget
-        self.Main_down_widget = QWidget(self.Main_widget)
-        self.Main_down_widget_layout = QGridLayout(self.Main_down_widget)
-        self.Main_down_left_widget = QWidget(self.Main_down_widget)
-        self.Main_down_left_widget_layout = QGridLayout(self.Main_down_left_widget)
-        self.Main_down_left_button_news = QPushButton(self.Main_down_left_widget)
-        self.Main_down_left_button_chart = QPushButton(self.Main_down_left_widget)
-        self.Main_down_left_button_stats = QPushButton(self.Main_down_left_widget)
-        self.Main_down_center_widget = QWidget(self.Main_down_widget)
-        self.Main_down_center_widget_layout = QGridLayout(self.Main_down_center_widget)
-        self.Main_down_center_indi = QPushButton(self.Main_down_center_widget)
-        self.Main_down_center_fore = QPushButton(self.Main_down_center_widget)
-        self.Main_down_right_widget = QWidget(self.Main_down_widget)
-        self.Main_down_right_widget_layout = QGridLayout(self.Main_down_right_widget)
-        self.Main_down_right_button_world = QPushButton(self.Main_down_right_widget)
-        self.Main_down_right_label_world = QLabel(self.Main_down_right_button_world)
-        self.Main_down_right_button_market = QPushButton(self.Main_down_right_widget)
-        self.Main_down_right_label_market = QLabel(self.Main_down_right_button_market)
-        self.Main_down_right_button_country = QPushButton(self.Main_down_right_widget)
-        self.Main_down_right_label_country = QLabel(self.Main_down_right_button_country)
+#-----------------------------------------------------------------------------------------------------------------------
+
+        #
+        # App Widget
+        #
+
+        self.app_layout = QVBoxLayout(self)
+#-----------------------------------------------------------------------------------------------------------------------
+
+        #
+        # Main panel
+        #
+        self.main_widget = QWidget(self)
+        self.main_widget_layout = QGridLayout(self.main_widget)
+        # Main panel Top Widget
+        self.main_top_widget = QWidget(self.main_widget)
+        self.main_top_widget_layout = QGridLayout(self.main_top_widget)
+        self.main_top_button_exit = QPushButton(self.main_top_widget)
+        self.main_top_button_window = QPushButton(self.main_top_widget)
+        self.main_top_button_minimize = QPushButton(self.main_top_widget)
+        self.main_top_button_search_button = QPushButton(self.main_top_widget)
+        self.main_top_button_settings = QPushButton(self.main_top_widget)
+        # Main panel Center Widget
+        self.main_center_widget = QWidget(self.main_widget)
+        self.main_center_widget_layout = QGridLayout(self.main_center_widget)
+        # Main panel Center Left
+        self.main_center_left_label = QLabel(self.main_center_widget)
+        # Main panel Center center
+        self.main_center_center_label = QLabel(self.main_center_widget)
+        # Main panel Center right
+        self.main_center_right_widget = QWidget(self.main_center_widget)
+        self.main_center_right_widget_layout = QVBoxLayout(self.main_center_right_widget)
+        self.main_center_right_deafoult_label = QLabel(self.main_center_right_widget)
+        # Main panel down Widget
+        self.main_down_widget = QWidget(self.main_widget)
+        self.main_down_widget_layout = QGridLayout(self.main_down_widget)
+        self.main_down_left_widget = QWidget(self.main_down_widget)
+        self.main_down_left_widget_layout = QGridLayout(self.main_down_left_widget)
+        self.main_down_left_button_news = QPushButton(self.main_down_left_widget)
+        self.main_down_left_button_chart = QPushButton(self.main_down_left_widget)
+        self.main_down_left_button_stats = QPushButton(self.main_down_left_widget)
+        self.main_down_center_widget = QWidget(self.main_down_widget)
+        self.main_down_center_widget_layout = QGridLayout(self.main_down_center_widget)
+        self.main_down_center_indi = QPushButton(self.main_down_center_widget)
+        self.main_down_center_fore = QPushButton(self.main_down_center_widget)
+        self.main_down_right_widget = QWidget(self.main_down_widget)
+        self.main_down_right_widget_layout = QGridLayout(self.main_down_right_widget)
+        self.main_down_right_button_world = QPushButton(self.main_down_right_widget)
+        self.main_down_right_label_world = QLabel(self.main_down_right_button_world)
+        self.main_down_right_button_market = QPushButton(self.main_down_right_widget)
+        self.main_down_right_label_market = QLabel(self.main_down_right_button_market)
+        self.main_down_right_button_country = QPushButton(self.main_down_right_widget)
+        self.main_down_right_label_country = QLabel(self.main_down_right_button_country)
 # ----------------------------------------------------------------------------------------------------------------------
 
     def setup_main_widget(self):
-        from _01_main_setObjectName import set_object_name
-        from _02_main_setProperty import set_Property_objects
-        from _03_main_setLayout import add_widget_to_layout, set_layout_properties, set_layout_columnstretch, set_Layout_to_Widget
-        from _04_main_setWidget import set_widget_hidden, set_scroll_resizable, set_widget_to_scroll, set_Widget_wrap
-        from _05_main_setLineEdit import set_Place_Holder, set_Password
-        from _06_main_setLabel import set_Align
-        from _07_setPushButton import set_button_disabled
-        from _08_main_setRetranslate import retranslate
-        from _09_main_ConnectButtons import set_Connect_button
-        from _10_main_setGraphics import set_label_graphic
-        from _11_main_setSize import set_size_objects
-        from _12_main_setAnimation import set_Add_Anim, set_Duration, set_curve
+        from _01_main_setObjectName import main_setObjectName
+        from _02_main_setProperty import main_setProperty
+        from _03_main_setLayout import main_setLayout
+        from _04_main_setWidget import main_setWidget
+        from _05_main_setLineEdit import main_setLineEdit
+        from _06_main_setLabel import main_setLabel
+        from _07_setPushButton import main_setPushButton
+        from _08_main_setRetranslate import main_setRetranslate
+        from _09_main_ConnectButtons import main_setConnectButton
+        from _10_main_setGraphics import main_setGraphics
+        from _11_main_setSize import main_setSize
+        from _12_main_setAnimation import main_setAnimation
         from _14_main_setScripts import news_controller
 
 
-        self.window_widget.setObjectName("Form")
+        #self.window_widget.setObjectName("Form")
         # Ustaw nowy rozmiar okna
         #self.window_widget.resize(self.new_width, self.new_height)
-        self.window_widget.setWindowFlag(Qt.FramelessWindowHint)
-        self.window_widget.setWindowTitle("STOCK BOT")
-        self.news_controller = news_controller(self.window_widget, self)
-        #Set ObjectName
-        set_object_name(self)
-        #Set Property
-        set_Property_objects(self)
-        # Set Layout
-        add_widget_to_layout(self)
-        set_layout_properties(self)
-        set_layout_columnstretch(self)
-        set_Layout_to_Widget(self)
-        # Set Widget
-        set_widget_hidden(self)
-        set_scroll_resizable(self)
-        set_widget_to_scroll(self)
-        set_Widget_wrap(self)
-        # Set Line Edit
-        set_Place_Holder(self)
-        set_Password(self)
-        # Set Label
-        set_Align(self)
-        # Set Push Butoon
-        set_button_disabled(self)
-        # Retranslate
-        retranslate(self)
-        # Connect Buttons
-        set_Connect_button(self)
-        # Set Graphics
-        set_label_graphic(self)
-        # Set Size
-        set_size_objects(self)
-        # Set Animation
-        set_Add_Anim(self)
-        set_Duration(self)
-        set_curve(self)
+        #self.window_widget.setWindowFlag(Qt.FramelessWindowHint)
+        #self.window_widget.setWindowTitle("STOCK BOT")
+        #self.news_controller = news_controller(self.window_widget, self)
+#-----------------------------------------------------------------------------------------------------------------------
+
+        #
+        # Call setup functions
+        #
+
+        # setObjectName
+        main_setObjectName(self)
+        # setProperty
+        main_setProperty(self)
+        # setLayout
+        main_setLayout(self)
+        # setWidget
+        main_setWidget(self)
+        # setLineEdit
+        main_setLineEdit(self)
+        # setLabel
+        main_setLabel(self)
+        # setPushButton
+        main_setPushButton(self)
+        # setRetranslate
+        main_setRetranslate(self)
+        # setConnectButton
+        main_setConnectButton(self)
+        # setGraphics
+        main_setGraphics(self)
+        # setSize
+        main_setSize(self)
+        # setAnimation
+        main_setAnimation(self)
 
     @staticmethod
     def off():
@@ -257,10 +260,10 @@ class Window_Widget(QWidget):
         super().__init__()
         self.screen_main = QApplication.primaryScreen()
         self.screen_main_size = self.screen_main.size()
-        self.setGeometry(QRect(self.screen_main_size.width()//4,
-                               self.screen_main_size.height()//4,
-                               self.screen_main_size.width()//2,
-                               self.screen_main_size.height()//2))
+        self.setGeometry(QRect(self.screen_main_size.width()//6,
+                               self.screen_main_size.height()//6,
+                               int(self.screen_main_size.width()//1.5),
+                               int(self.screen_main_size.height()//1.5)))
         self.setObjectName('Window')
 
         self.window_layout = QVBoxLayout(self)
@@ -269,7 +272,7 @@ class Window_Widget(QWidget):
         self.setLayout(self.window_layout)
 
         self.login_widget = None
-        self.main_widget = None
+        self.app_widget = None
         self.app_path = os.getcwd()
 
     # Login Widget
@@ -283,14 +286,14 @@ class Window_Widget(QWidget):
             self.login_widget.deleteLater()
 
     # Main Widget
-    def create_destroy_main_widget(self):
-        if not self.main_widget:
-            self.main_widget = Main_widget(self)
-            self.main_widget.setup_main_widget()
-            self.window_layout.addWidget(self.main_widget)
-            self.main_widget.show()
+    def create_destroy_app_widget(self):
+        if not self.app_widget:
+            self.app_widget = App_widget(self)
+            self.app_widget.setup_main_widget()
+            self.window_layout.addWidget(self.app_widget)
+            self.app_widget.show()
         else:
-            self.main_widget.deleteLater()
+            self.app_widget.deleteLater()
 
     def set_Css(self):
         _json_file = json.load(open(self.app_path+'/TickerK8_app/app_files/JSON/CONFIG/_00_main_config.json'))
