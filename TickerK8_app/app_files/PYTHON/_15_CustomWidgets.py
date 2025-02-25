@@ -3,19 +3,24 @@ from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt, QTimer, QPropertyAnimation, QSize, QRect
 import requests
 import json
+import os
 from io import BytesIO
 
 
 class news_main_widget(QWidget):
-    def __init__(self, form, parent, database_select):
+    def __init__(self, parent, window_widget, database_select):
         super().__init__()
         self.setParent(parent)
+        self.parent = parent
+        self.window_widget = window_widget
         self.database_select = database_select
         self.button_list = []
         self.button_list_index = 0
         self.news_form_widget = None
-        self.news_form_parent = form
         self.news_form_data_list = []
+
+        self.setParent(self.parent)
+        print(self.parent.size())
 
 #
 # Create Objects
@@ -25,7 +30,7 @@ class news_main_widget(QWidget):
         for data in self.database_select:
             button = QPushButton(self)
             self.layout.addWidget(button, 0, 0, 90, 100)
-            button.setFixedSize(int(parent.width()), int(parent.height()*0.90))
+            button.setFixedSize(int(self.parent.width()), int(self.parent.height()*0.90))
 
             _json = json.loads(data[1])
             self.news_form_data_list.append(_json)
@@ -49,7 +54,7 @@ class news_main_widget(QWidget):
             label.setText(_json['title'])
             label.setWordWrap(True)
             label.setAlignment(Qt.AlignCenter)
-            label.setStyleSheet('color: #EDF4F2; background-color: #50000000; padding: 1em; font-size: 32px; font-weight: 600; letter-spacing: 0.5em;')
+            label.setStyleSheet('color: #FDFFFC; background-color: #50000000; padding: 1em; font-size: 32px; font-weight: 600; letter-spacing: 0.5em;')
 
             button.setHidden(True)
             self.button_list.append(button)
@@ -102,8 +107,8 @@ class news_main_widget(QWidget):
 # Set Icons
 #
 
-        self.next_left_button.setIcon(QIcon('../ICONS/UI/arrow-circle-left.png'))
-        self.next_right_button.setIcon(QIcon('../ICONS/UI/arrow-circle-right.png'))
+        self.next_left_button.setIcon(QIcon(os.getcwd()+'/TickerK8_app/app_files/ICONS/UI/arrow-circle-left.png'))
+        self.next_right_button.setIcon(QIcon(os.getcwd()+'/TickerK8_app/app_files/ICONS/UI/arrow-circle-right.png'))
 #----------------------------------------------------------------------------------------------------------------------
 
 #
@@ -120,23 +125,23 @@ class news_main_widget(QWidget):
 
         self.setStyleSheet('''
             #next_widget{
-                background-color: #EDF4F2;
+                background-color: #FAF7F0;
             }
             #next_left_button{
-                background-color: #C0E6DC;
+                background-color: #D8D2C2;
                 border:0;
                 padding: 1em;
             }
             #next_left_button:hover{
-                background-color: #DDE4E2;
+                background-color: #4A4947;
             }
             #next_right_button{
-                background-color: #C0E6DC;
+                background-color: #D8D2C2;
                 border:0;
                 padding: 1em;
             }
             #next_right_button:hover{
-                background-color: #DDE4E2;
+                background-color: #4A4947;
             }
         ''')
 #----------------------------------------------------------------------------------------------------------------------
@@ -162,7 +167,7 @@ class news_main_widget(QWidget):
         self.timer.start(5000)
 
     def open_news_form(self):
-        self.news_form_widget = news_form_widget(self.news_form_parent, self.news_form_data_list, self.button_list_index)
+        self.news_form_widget = news_form_widget(self.window_widget, self.news_form_data_list, self.button_list_index)
         self.news_form_widget.show()
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -290,10 +295,10 @@ class news_form_widget(QWidget):
 #
 # Set Graphics
 #
-        self.tools_day_night_button.setIcon(QIcon('../ICONS/UI/sun.png'))
-        self.tools_previous_button.setIcon(QIcon('../ICONS/UI/arrow-circle-left.png'))
-        self.tools_next_button.setIcon(QIcon('../ICONS/UI/arrow-circle-right.png'))
-        self.tools_exit_button.setIcon(QIcon('../ICONS/UI/exit-alt.png'))
+        self.tools_day_night_button.setIcon(QIcon(os.getcwd()+'/TickerK8_app/app_files/ICONS/UI/sun.png'))
+        self.tools_previous_button.setIcon(QIcon(os.getcwd()+'/TickerK8_app/app_files/ICONS/UI/arrow-circle-left.png'))
+        self.tools_next_button.setIcon(QIcon(os.getcwd()+'/TickerK8_app/app_files/ICONS/UI/arrow-circle-right.png'))
+        self.tools_exit_button.setIcon(QIcon(os.getcwd()+'/TickerK8_app/app_files/ICONS/UI/exit-alt.png'))
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -314,7 +319,7 @@ class news_form_widget(QWidget):
 #
 # Set StyleSheet
 #
-        self.setStyleSheet(open('../CSS/_main_news_form_day_css.css').read())
+        self.setStyleSheet(open(os.getcwd()+'/TickerK8_app/app_files/CSS/_main_news_form_day_css.css').read())
         self.day_content()
 
 #----------------------------------------------------------------------------------------------------------------------
@@ -451,13 +456,13 @@ class news_form_widget(QWidget):
 
     def day_night_mode(self):
         if self._day_night_mode:
-            self.tools_day_night_button.setIcon(QIcon('../ICONS/UI/moon.png'))
-            self.setStyleSheet(open('../CSS/_main_news_form_night_css.css').read())
+            self.tools_day_night_button.setIcon(QIcon(os.getcwd()+'/TickerK8_app/app_files/ICONS/UI/moon.png'))
+            self.setStyleSheet(open(os.getcwd()+'/TickerK8_app/app_files/CSS/_main_news_form_night_css.css').read())
             self.night_content()
             self._day_night_mode = False
         else:
-            self.tools_day_night_button.setIcon(QIcon('../ICONS/UI/sun.png'))
-            self.setStyleSheet(open('../CSS/_main_news_form_day_css.css').read())
+            self.tools_day_night_button.setIcon(QIcon(os.getcwd()+'/TickerK8_app/app_files/ICONS/UI/sun.png'))
+            self.setStyleSheet(open(os.getcwd()+'/TickerK8_app/app_files/CSS/_main_news_form_day_css.css').read())
             self.day_content()
             self._day_night_mode = True
 

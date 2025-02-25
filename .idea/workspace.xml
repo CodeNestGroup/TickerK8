@@ -4,30 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f599dafb-8417-446d-8e74-30e5a48459e8" name="Changes" comment="0.2">
+    <list default="true" id="f599dafb-8417-446d-8e74-30e5a48459e8" name="Changes" comment="0.3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_00_main_light.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_00_main_light.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_day_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_day_css.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_night_css.css" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/CSS/_main_news_form_night_css.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_0000_app_base.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_0000_app_base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_01_main_setObjectName.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_01_main_setObjectName.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_main_setProperty.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_02_main_setProperty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_login_setLayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_login_setLayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_main_setLayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_03_main_setLayout.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_04_main_setWidget.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_04_main_setWidget.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_login_setLineEdit.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_login_setLineEdit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_main_setLineEdit.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_05_main_setLineEdit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_06_main_setLabel.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_06_main_setLabel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_07_setPushButton.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_07_setPushButton.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_08_main_setRetranslate.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_08_main_setRetranslate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_login_setConnectButton.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_login_setConnectButton.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_main_ConnectButtons.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_09_main_ConnectButtons.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_10_main_setGraphics.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_10_main_setGraphics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_11_main_setSize.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_11_main_setSize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_12_main_setAnimation.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_12_main_setAnimation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_13_login_Scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_13_login_Scripts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_14_main_setScripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_14_main_setScripts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_updater/_01_main_setObjectName.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/_01_main_setObjectName.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_updater/_03_main_setLayout.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/_03_main_setLayout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_15_CustomWidgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_app/app_files/PYTHON/_15_CustomWidgets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_updater/_10_main_setSize.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/_10_main_setSize.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_updater/_13_main_Scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/_13_main_Scripts.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,6 +165,8 @@
       <workItem from="1740405545786" duration="1839000" />
       <workItem from="1740410514929" duration="1060000" />
       <workItem from="1740481404078" duration="1877000" />
+      <workItem from="1740512573651" duration="556000" />
+      <workItem from="1740515412953" duration="1706000" />
     </task>
     <task id="LOCAL-00001" summary="0.1">
       <option name="closed" value="true" />
@@ -200,7 +192,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740434121429</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="0.3">
+      <option name="closed" value="true" />
+      <created>1740495379002</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740495379002</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +228,7 @@
     <MESSAGE value="0.0" />
     <MESSAGE value="0.1" />
     <MESSAGE value="0.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="0.2" />
+    <MESSAGE value="0.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="0.3" />
   </component>
 </project>

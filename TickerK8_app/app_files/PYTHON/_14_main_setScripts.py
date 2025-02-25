@@ -4,6 +4,7 @@
 
 import json
 import os
+import sys
 
 from PyQt5.QtCore import QSize, QRect, QPoint, QParallelAnimationGroup, QSequentialAnimationGroup, QPropertyAnimation, QTimer, Qt, QUrl, QThread, pyqtSignal
 from PyQt5.QtGui import QIcon, QPixmap
@@ -12,18 +13,29 @@ import pygame
 from PyQt5.QtWidgets import QVBoxLayout, QPushButton
 #-----------------------------------------------------------------------------------------------------------------------
 
-def main_page_window(self):
-    if self.fullscreen:
-        self.window.showNormal()
-        self.window.resize(self.new_width, self.new_height)
+#
+# Window Control Functions
+#
+
+# Off
+def app_off(app):
+    sys.exit(app.exec_())
+
+# Make Window
+def app_set_screen_mode(self, app):
+    if self.app_mode_fullscreen:
+        app.showNormal()
+        app.resize(app.app_size)
     else:
-        self.window.showFullScreen()
+        app.showFullScreen()
 
-    self.fullscreen = not self.fullscreen
+    self.app_mode_fullscreen = not self.app_mode_fullscreen
 
-# Main, Minimize #
-def main_page_minimize(self):
-    self.window.showMinimized()
+# Main, Minimize
+def app_minimize(app):
+    app.showMinimized()
+
+#-----------------------------------------------------------------------------------------------------------------------
 
 #
 # Sounds
@@ -63,9 +75,9 @@ def resize_photo(photo, button):
 
 
 def main_set_news_photo(self):
-    pix_1 = QPixmap('../PICTURES/UI/earth_background.png')
-    pix_2 = QPixmap('../PICTURES/UI/market_background.png')
-    pix_3 = QPixmap('../PICTURES/UI/country_background.png')
+    pix_1 = QPixmap(os.getcwd()+'/TickerK8_app/app_files/PICTURES/UI/earth_background.png')
+    pix_2 = QPixmap(os.getcwd()+'/TickerK8_app/app_files/PICTURES/UI/market_background.png')
+    pix_3 = QPixmap(os.getcwd()+'/TickerK8_app/app_files/PICTURES/UI/country_background.png')
 
     self.main_down_right_button_world.setIcon(QIcon(resize_photo(pix_1, self.main_down_right_button_world)))
     self.main_down_right_button_world.setIconSize(self.main_down_right_button_world.size())
@@ -87,22 +99,20 @@ from _15_CustomWidgets import news_main_widget, news_form_widget
 import mysql.connector
 
 class news_controller(object):
-    def __init__(self, form, main_self):
+    def __init__(self, main_self):
         self.main_self = main_self
-        self.form = form
+        self.window_widget = self.main_self.window_widget
         self._news_main_widget = None
         self._news_form_widget = None
 
-    def _connect_database(self):
-        return mysql.connector.connect(
-            host='localhost',
-            user='client',
-            password='Qwerty123456#',
-            database='TickerK8',
-        )
-
     def get_news_main(self):
-        _connect = self._connect_database()
+        _json_file = json.load(open(os.getcwd() + '/TickerK8_app/app_files/JSON/CONFIG/_00_main_config.json'))
+        _connect = mysql.connector.connect(
+            host=_json_file['__SQL__']['_host_'],
+            user=_json_file['__SQL__']['_user_'],
+            password=_json_file['__SQL__']['_password_'],
+            database=_json_file['__SQL__']['_database_']
+        )
         _cursor = _connect.cursor()
         _cursor.execute('SELECT id, json_file FROM news LIMIT 5;')
         _result = _cursor.fetchall()
@@ -110,7 +120,7 @@ class news_controller(object):
         return _result
 
     def news_main_create_widget(self):
-        #self._news_main_widget = news_main_widget(self.form, self.main_self.Main_center_right_widget, self.get_news_main())
-        #self.main_self.Main_center_right_widget_layout.addWidget(self._news_main_widget)
-        #self.main_self.Main_center_right_deafoult_label.setHidden(True)
-        pass
+        self._news_main_widget = news_main_widget(self.main_self.main_center_right_widget, self.window_widget, self.get_news_main())
+        self.main_self.main_center_right_widget_layout.addWidget(self._news_main_widget)
+        self.main_self.main_center_right_deafoult_label.hide()
+#-----------------------------------------------------------------------------------------------------------------------

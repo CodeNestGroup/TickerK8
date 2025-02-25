@@ -134,9 +134,7 @@ class App_widget(QWidget):
         self.window_widget = parent
         self.setParent(self.window_widget)
 
-        self.Mode = False
-        self.fullscreen = False
-        self.window = None
+        self.app_mode_fullscreen = True
 #-----------------------------------------------------------------------------------------------------------------------
 
         #
@@ -193,6 +191,9 @@ class App_widget(QWidget):
 # ----------------------------------------------------------------------------------------------------------------------
 
     def setup_main_widget(self):
+        #
+        # Import setup functions
+        #
         from _01_main_setObjectName import main_setObjectName
         from _02_main_setProperty import main_setProperty
         from _03_main_setLayout import main_setLayout
@@ -205,7 +206,7 @@ class App_widget(QWidget):
         from _10_main_setGraphics import main_setGraphics
         from _11_main_setSize import main_setSize
         from _12_main_setAnimation import main_setAnimation
-        from _14_main_setScripts import news_controller
+        from _14_main_setScripts import app_off, app_set_screen_mode, app_minimize, news_controller
 
 
         #self.window_widget.setObjectName("Form")
@@ -214,6 +215,17 @@ class App_widget(QWidget):
         #self.window_widget.setWindowFlag(Qt.FramelessWindowHint)
         #self.window_widget.setWindowTitle("STOCK BOT")
         #self.news_controller = news_controller(self.window_widget, self)
+#-----------------------------------------------------------------------------------------------------------------------
+
+        #
+        # Set functions to Variables
+        #
+
+        self.app_off = lambda: app_off(self.window_widget.app)
+        self.app_set_screen_mode = lambda: app_set_screen_mode(self, self.window_widget)
+        self.app_minimize = lambda: app_minimize(self.window_widget)
+
+        self.news_cotroller = news_controller(self)
 #-----------------------------------------------------------------------------------------------------------------------
 
         #
@@ -245,11 +257,8 @@ class App_widget(QWidget):
         # setAnimation
         main_setAnimation(self)
 
-    @staticmethod
-    def off():
-        sys.exit(app.exec_())
+        self.news_cotroller.news_main_create_widget()
 # ----------------------------------------------------------------------------------------------------------------------
-
 
 #
 # Window
@@ -274,6 +283,8 @@ class Window_Widget(QWidget):
         self.login_widget = None
         self.app_widget = None
         self.app_path = os.getcwd()
+        self.app_size = self.size()
+        self.app = app
 
     # Login Widget
     def create_destroy_login_widget(self):
@@ -295,6 +306,7 @@ class Window_Widget(QWidget):
         else:
             self.app_widget.deleteLater()
 
+    # App Css
     def set_Css(self):
         _json_file = json.load(open(self.app_path+'/TickerK8_app/app_files/JSON/CONFIG/_00_main_config.json'))
         self.setStyleSheet(open(self.app_path+_json_file['__CSS__']).read())

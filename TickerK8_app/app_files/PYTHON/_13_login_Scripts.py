@@ -60,11 +60,29 @@ def failed_login(self):
 def register(self):
     _json_file = json.load(open(os.getcwd() + '/TickerK8_app/app_files/JSON/CONFIG/_00_main_config.json'))
     _connect = mysql.connector.connect(
-        host=_json_file['__SQL__']['_hsot_'],
+        host=_json_file['__SQL__']['_host_'],
         user = _json_file['__SQL__']['_user_'],
         password = _json_file['__SQL__']['_password_'],
         database = _json_file['__SQL__']['_database_']
     )
+    _name = self.register_name_lineedit.text()
+    _emial = None
+    _phone = '+48'+self.register_phonenumber_lineedit.text()
+    _country = 'poland'
+    _password = None
+
+    if self.register_emial_lineedit.text() == self.register_emial_confirm_lineedit.text():
+        _emial = self.register_emial_lineedit.text()
+
+    if self.register_password_lineedit.text() == self.register_password_confirm_lineedit.text():
+        _password = self.register_password_lineedit.text()
+
+
+    _connect.cursor().execute(f'INSERT INTO users (name, emial, phone, country, password) VALUES ("{_name}", "{_emial}", "{_phone}", "{_country}", "{_password}")')
+    _connect.commit()
+    _connect.close()
+
+    show_hide_login_register_widget(self)
 
 #-----------------------------------------------------------------------------------------------------------------------
 
