@@ -890,18 +890,18 @@ class controller_download(QThread):
     def update_compatibility(self):
         try: # Try check compatibility
             self.progress_index.emit(3) # Emit signal 3
-            self.update_json_file_list = json.load(open(self.main_self.main_path+self.update_folder+'TickerK8-updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', 'r')) # Set update file list
+            self.update_json_file_list = json.load(open(self.main_self.main_path+self.update_folder+'TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', 'r')) # Set update file list
             total_files = len(self.update_json_file_list) # Get number of files
             checked_file = 0 # Number of checked files
             for file, check_sum in self.update_json_file_list.items(): # Check compatibility
-                if check_sum == 'config':
-                    continue
-                elif check_sum != self.main_self.controller_update.calculate_sha256(self.main_self.main_path+self.update_folder+file):
-                    self.progress_index.emit(6)
-                    shutil.rmtree(self.main_self.main_path + self.update_folder)  # Remove update folder
-                    break
-                checked_file += 1 # Add checked file
-                self.progress_bar_value.emit(int((checked_file/total_files)*100)) # Update progress bar
+                if os.path.exists(self.main_self.main_path+self.update_folder[:-1]+file):
+                    if check_sum != 'config':
+                        if check_sum != self.main_self.controller_update.calculate_sha256(self.main_self.main_path+self.update_folder[:-1]+file):
+                            self.progress_index.emit(6)
+                            shutil.rmtree(self.main_self.main_path + self.update_folder)  # Remove update folder
+                            break
+                        checked_file += 1 # Add checked file
+                        self.progress_bar_value.emit(int((checked_file/total_files)*100)) # Update progress bar
             self.progress_bar_value.emit(100) # Debug, update progress bar to 100
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
@@ -914,16 +914,22 @@ class controller_download(QThread):
             self.progress_index.emit(4) # Emit signal 4
             total_files = len(self.update_json_file_list) # Get number of files
             installed_files = 0 # Number of installed files
-            for update_file in self.update_json_file_list.keys(): # Overwrite files
-                shutil.copy(self.main_self.main_path+self.update_folder+update_file, self.main_self.main_path+update_file)  # Change file
-            for app_file in self.main_self.settings_app_file_list_file.keys():
-                if app_file not in self.update_json_file_list.keys():
-                    os.remove(self.main_self.main_path+app_file) # Remove old file
-                installed_files += 1 # Add intalled file number
-                self.progress_bar_value.emit(int((installed_files/total_files)*100)) # Update progress bar
+            for path, check_sum in self.update_json_file_list.items():
+                installed_files += 1
+                self.progress_bar_value.emit(int((installed_files / total_files) * 100))  # Update progress bar
+                if os.path.exists(self.main_self.main_path+path):
+                    if self.main_self.settings_app_file_list_file[path] == check_sum:
+                        continue
+                shutil.copy(self.main_self.main_path+self.update_folder[:-1]+path, self.main_self.main_path+path) # Copy, add file
+
+            for path in self.main_self.settings_app_file_list_file.keys():
+                if path not in self.update_json_file_list.keys():
+                    os.remove(self.main_self.main_path+path)  # Remove old file
+
+            shutil.copy(self.main_self.main_path+self.update_folder[:-1]+'/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json')  # Copy, add file
             self.progress_bar_value.emit(100) # Debug, update progress bar to 100
-            shutil.rmtree(self.main_self.main_path + self.update_folder) # Remove update folder
-            self.main_self.settings_app_file_list_file = json.load(open(self.main_self.main_path+'/TickerK8-updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', 'r')) # Reload settings app file list
+            self.main_self.settings_app_file_list_file = json.load(open(self.main_self.main_path + '/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json','r'))  # Reload settings app file list
+            shutil.rmtree(self.main_self.main_path + self.update_folder[:-1]) # Remove update folder
             self.main_self.controller_update.check_compatibility() # Call funcation that check compatibility of all files
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
@@ -1039,7 +1045,7 @@ class controller_notification:
 #_______________________________________________________________________________________________________________________
     """ Open """
     def open(self):
-        try: # Try open notification 
+        try: # Try open notification
             if not self._opened: # Check if not opened
                 self.main_self.notification_background_widget.setHidden(False)
                 self.main_self.notification_background_widget.setFixedSize(QSize(self.main_self.width(), self.main_self.height()//5)) # Set background widget size
@@ -1092,7 +1098,7 @@ class controller_notification:
 #_______________________________________________________________________________________________________________________
     """ Hide """
     def hide(self):
-        try: # Try hide notification 
+        try: # Try hide notification
             self.main_self.notification_background_widget.setHidden(True) # Hide notification background widget
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
@@ -1112,7 +1118,7 @@ class controller_alert:
 #_______________________________________________________________________________________________________________________
     """ Open """
     def open(self):
-        try: # Try open alert 
+        try: # Try open alert
             self.main_self.alert_background_widget.setGeometry(QRect(0,0,self.main_self.width(), self.main_self.height())) # Set geometry for alert background
             self.main_self.alert_background_widget.setHidden(False) # Show alert
         except Exception:  # Except if problem with code
@@ -1197,7 +1203,7 @@ class controller_ping(QThread):
                 if not self.is_connect:
                     self.signal.emit(1)
                     self.is_connect = True
-            except requests.ConnectionError:
+            except Exception:
                 if self.is_connect:
                     self.signal.emit(0)
                     self.is_connect = False

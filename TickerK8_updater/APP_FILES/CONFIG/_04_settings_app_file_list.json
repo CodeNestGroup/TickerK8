@@ -1,7 +1,6 @@
 {
     "/Launcher.sh": "335de290ea7278e8e14c0293ac8cefe8b9dd2d913d8d1ca4427f37052e964da8",
     "/TickerK8.sh": "1eabedcc14af31382d581b4ceace29d573af180aad2781a0b87f98d0a1bcef54",
-    "/Readme.md": "c9d04c9565fc665c80681fb1d829938026871f66e14f501e08531df66938a789",
     "/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json": "config",
     "/TickerK8_updater/APP_FILES/CONFIG/_01_settings_translate.json": "b6aeddbaefe1df7cc4b788e2025cc4ac10bfc61e83770cd0eb2f6116b383132f",
     "/TickerK8_updater/APP_FILES/CONFIG/_02_settings_theme.json": "ef3b359f484e0780abfc4e18b8a4c547a3c8ef4fcc5349687ee7e5eafc8bfaed",
@@ -34,7 +33,7 @@
     "/TickerK8_updater/APP_FILES/PYTHON/_08_main_setConnect.py": "0e1dd4915d9864d6298b76bcaf8bc4a8f0b04f0323011c36719e84713ca1cb17",
     "/TickerK8_updater/APP_FILES/PYTHON/_09_main_setPushButton.py": "0955e997acead6c82851f805884be9655f4abf72e3e277126996658c13d147d8",
     "/TickerK8_updater/APP_FILES/PYTHON/_10_main_setSize.py": "8714d98bbb87dae37f1e45c96e853d952a185f05f8104b6650dff54e22fff0b6",
-    "/TickerK8_updater/APP_FILES/PYTHON/_11_main_Scripts.py": "0c7ffef670513fe3500f729f3e30eec21d7bb2a1ef4fbb074a18735cedfaffab",
+    "/TickerK8_updater/APP_FILES/PYTHON/_11_main_Scripts.py": "d6e2e3a25452b95eafdbb5132ecc1a3720ca572dbdad961b6e76d8d496e1a608",
     "/TickerK8_updater/APP_FILES/PYTHON/_12_main_customWidgets.py": "ada01cce243bc1659b85e6821ef2337d20cbcb49356f448f781eac7d05ccfeb5",
     "/TickerK8_app/app_files/CSS/_00_main_light.css": "9f3f84d037432c75af93506af601db78b91063659ca67393dbd70d33fd84520c",
     "/TickerK8_app/app_files/CSS/_main_day_css.css": "0d050a194262efa8ee3d5f9d69e837e2d964f010bb3ae4db711ec43e1947c41e",

@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e0e9d04-2db6-47c6-8c0b-6aca752e75ac" name="Changes" comment="Bartek PRE ALPAHA 0.0.1.2">
-      <change afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+    <list default="true" id="5e0e9d04-2db6-47c6-8c0b-6aca752e75ac" name="Changes" comment="Bartek PRE ALPAHA 0.0.1.3">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/PYTHON/_00_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/PYTHON/_00_main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/CONFIG/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/CONFIG/log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/PYTHON/_11_main_Scripts.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/PYTHON/_11_main_Scripts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/PYTHON/_12_main_customWidgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/TickerK8_updater/APP_FILES/PYTHON/_12_main_customWidgets.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +138,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743489304481</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Bartek PRE ALPAHA 0.0.1.3">
+      <option name="closed" value="true" />
+      <created>1743495072665</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1743495072665</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +177,7 @@
     <MESSAGE value="Bartek PRE ALPAHA 0.0.1" />
     <MESSAGE value="Bartek PRE ALPAHA 0.0.1.1" />
     <MESSAGE value="Bartek PRE ALPAHA 0.0.1.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bartek PRE ALPAHA 0.0.1.2" />
+    <MESSAGE value="Bartek PRE ALPAHA 0.0.1.3" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bartek PRE ALPAHA 0.0.1.3" />
   </component>
 </project>
