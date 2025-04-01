@@ -323,8 +323,8 @@ class controller_settings:
     def change_language(self):
         try: # Try open json file, debug
             self.main_self.settings_config_file['__language__'] = int(self.main_self.settings_language_type_combobox.currentIndex())  # Change language index
-            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save changes
-            self.main_self.settings_config_file = json.load(open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r')) # Reload settings config file
+            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save changes
+            self.main_self.settings_config_file = json.load(open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r')) # Reload settings config file
             self.set_translate() # Call funcation that retranslate application
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
@@ -335,8 +335,8 @@ class controller_settings:
     def change_theme(self):
         try: # Try change theme in application
             self.main_self.settings_config_file['__theme__'] = int(self.main_self.settings_theme_list_combobox.currentIndex()) # Change theme index
-            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save changes
-            self.main_self.settings_config_file = json.load(open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))  # Reload settings config file
+            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save changes
+            self.main_self.settings_config_file = json.load(open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))  # Reload settings config file
             self.set_theme() # Call func that change theme
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
@@ -501,8 +501,8 @@ class controller_settings:
     def set_sound_d_e(self, _type):
         try: # Try set config
             self.main_self.settings_config_file[_type] = not self.main_self.settings_config_file[_type] # Change config
-            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save config
-            self.main_self.settings_config_file = json.load(open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r')) # Reload settings config file
+            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save config
+            self.main_self.settings_config_file = json.load(open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r')) # Reload settings config file
             button = None # Set deafoult
             if _type == '__sound_button__':
                 button = self.main_self.settings_sound_button_button
@@ -524,8 +524,8 @@ class controller_settings:
     def set_auto_update(self):
         try: # Try set config
             self.main_self.settings_config_file['__auto_update__'] = not self.main_self.settings_config_file['__auto_update__'] # Change config
-            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path + '/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'),indent=4)  # Save config
-            self.main_self.settings_config_file = json.load(open(self.main_self.main_path + '/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))  # Reload settings config file
+            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path + '/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'),indent=4)  # Save config
+            self.main_self.settings_config_file = json.load(open(self.main_self.main_path + '/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))  # Reload settings config file
             self.main_self.settings_update_option_autoupdate_button.setText(self.main_self.settings_translate_file['settings_update_option_autoupdate_button'][self.main_self.settings_config_file['__language__']][self.main_self.settings_config_file['__auto_update__']]) # Set translate
             self.main_self.notification_background_widget.setHidden(False)  # Show notification widget
             self.main_self.notification_text_label.setText(self.main_self.settings_translate_file['notification_text_label'][self.main_self.settings_config_file['__language__']][4]) # Set text
@@ -562,8 +562,8 @@ class controller_settings:
     def set_capacity(self):
        try: # Try set config
             self.main_self.settings_config_file['__capacity__'] = self.main_self.settings_update_advanced_capacity_combobox.currentIndex() # Set new value
-            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path + '/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save config
-            self.main_self.settings_config_file = json.load(open(self.main_self.main_path + '/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))  # Reload settings config file
+            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path + '/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save config
+            self.main_self.settings_config_file = json.load(open(self.main_self.main_path + '/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))  # Reload settings config file
        except Exception:  # Except if problem with code
            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
@@ -573,8 +573,8 @@ class controller_settings:
     def set_auto_report(self):
         try: # Try ser config
             self.main_self.settings_config_file['__auto_report__'] = not self.main_self.settings_config_file['__auto_report__']  # Change config
-            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save config
-            self.main_self.settings_config_file = json.load(open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r')) # Reload settings config file
+            json.dump(self.main_self.settings_config_file, open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'w'), indent=4) # Save config
+            self.main_self.settings_config_file = json.load(open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r')) # Reload settings config file
             self.main_self.settings_report_autoreport_button.setText(self.main_self.settings_translate_file['settings_report_autoreport_button'][self.main_self.settings_config_file['__language__']][self.main_self.settings_config_file['__auto_report__']])  # Set translate
             self.main_self.notification_background_widget.setHidden(False) # Show notification widget
             self.main_self.notification_text_label.setText(self.main_self.settings_translate_file['notification_text_label'][self.main_self.settings_config_file['__language__']][4]) # Set text
@@ -890,7 +890,7 @@ class controller_download(QThread):
     def update_compatibility(self):
         try: # Try check compatibility
             self.progress_index.emit(3) # Emit signal 3
-            self.update_json_file_list = json.load(open(self.main_self.main_path+self.update_folder+'TickerK8/TickerK8-updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', 'r')) # Set update file list
+            self.update_json_file_list = json.load(open(self.main_self.main_path+self.update_folder+'TickerK8-updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', 'r')) # Set update file list
             total_files = len(self.update_json_file_list) # Get number of files
             checked_file = 0 # Number of checked files
             for file, check_sum in self.update_json_file_list.items(): # Check compatibility
@@ -923,7 +923,7 @@ class controller_download(QThread):
                 self.progress_bar_value.emit(int((installed_files/total_files)*100)) # Update progress bar
             self.progress_bar_value.emit(100) # Debug, update progress bar to 100
             shutil.rmtree(self.main_self.main_path + self.update_folder) # Remove update folder
-            self.main_self.settings_app_file_list_file = json.load(open(self.main_self.main_path+'/TickerK8/TickerK8-updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', 'r')) # Reload settings app file list
+            self.main_self.settings_app_file_list_file = json.load(open(self.main_self.main_path+'/TickerK8-updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', 'r')) # Reload settings app file list
             self.main_self.controller_update.check_compatibility() # Call funcation that check compatibility of all files
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
@@ -968,7 +968,7 @@ class controller_report:
     """ Write log and send """
     def write_log(self, message):
         try: # Try write a log
-            log_file = open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/log.txt', 'a') # Open log file
+            log_file = open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/log.txt', 'a') # Open log file
             log_file.write(f"{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Error: {message} \n\n") # Write error
             if self.main_self.settings_config_file['__auto_report__']: # Check if auto report to database
                 try: # Try send report to database

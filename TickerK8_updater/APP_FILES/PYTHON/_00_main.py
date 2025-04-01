@@ -46,16 +46,16 @@ class Main_window(QWidget): # Create main window, widget.
         self.setWindowTitle('TickerK8 Launcher') # Set Window title.
         self.screen_size = QGuiApplication.primaryScreen().size() # Get screen size.
         self.main_settings_button_size = QSize(int(self.width() // 6), int(self.height() // 6)) # Set size for button icons.
-        self.main_path = str(pathlib.Path(__file__).resolve().parents[4]) # Set main path, path to TickerK8 folder.
+        self.main_path = str(pathlib.Path(__file__).resolve().parents[3]) # Set main path, path to TickerK8 folder.
         self.no_connection = False  # For download
 #_______________________________________________________________________________________________________________________
         """ Load json files, configs"""
-        self.settings_config_file = json.load(open(self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r')) # Load settings config file, static.
-        self.settings_translate_file = json.load(open(self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_01_settings_translate.json', 'r')) # Load settings translate file, static.
-        self.settings_theme_file = json.load(open(self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_02_settings_theme.json', 'r')) # Load settings theme file, static.
-        self.settings_icon_file = json.load(open(self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_03_settings_icon.json', 'r')) # Load settings icon file, static.
-        self.settings_app_file_list_file = json.load(open(self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', 'r')) # Load settings app file list file, static.
-        self.changelog_file = json.load(open(self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/changlog.json', 'r')) # Load changelog file
+        self.settings_config_file = json.load(open(self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r')) # Load settings config file, static.
+        self.settings_translate_file = json.load(open(self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_01_settings_translate.json', 'r')) # Load settings translate file, static.
+        self.settings_theme_file = json.load(open(self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_02_settings_theme.json', 'r')) # Load settings theme file, static.
+        self.settings_icon_file = json.load(open(self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_03_settings_icon.json', 'r')) # Load settings icon file, static.
+        self.settings_app_file_list_file = json.load(open(self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', 'r')) # Load settings app file list file, static.
+        self.changelog_file = json.load(open(self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/changlog.json', 'r')) # Load changelog file
 #_______________________________________________________________________________________________________________________
         """ Self items """
         self.layout = QVBoxLayout(self) # Main vertical layout, for responsive.
@@ -228,7 +228,7 @@ class Main_window(QWidget): # Create main window, widget.
 ########################################################################################################################
 """ Set font function"""
 def set_font():
-    font_id = QFontDatabase.addApplicationFont(str(pathlib.Path(__file__).resolve().parents[4])+'/TickerK8/TickerK8_updater/APP_FILES/FONTS/Montserrat-Regular.ttf') # Get font.
+    font_id = QFontDatabase.addApplicationFont(str(pathlib.Path(__file__).resolve().parents[3])+'/TickerK8_updater/APP_FILES/FONTS/Montserrat-Regular.ttf') # Get font.
     font_families = QFontDatabase.applicationFontFamilies(font_id) # Set font family.
     return QFont(font_families[0]) # Return new font.
 ########################################################################################################################

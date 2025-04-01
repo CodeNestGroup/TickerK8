@@ -93,7 +93,7 @@ class ShadowButton(QPushButton):
 
     """ Check user config """
     def check_config(self):
-            return json.load(open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))['__sound_button__'] # Returning config
+            return json.load(open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))['__sound_button__'] # Returning config
 ########################################################################################################################
 """ QPushButton_sound """
 class QPushButton_sound(QPushButton):
@@ -131,5 +131,5 @@ class QPushButton_sound(QPushButton):
     """ Check user config """
 
     def check_config(self):
-        return json.load(open(self.main_self.main_path+'/TickerK8/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))['__sound_button__']  # Returning config
+        return json.load(open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r'))['__sound_button__']  # Returning config
 ########################################################################################################################
