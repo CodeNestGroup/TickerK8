@@ -915,18 +915,18 @@ class controller_download(QThread):
             total_files = len(self.update_json_file_list) # Get number of files
             installed_files = 0 # Number of installed files
             for path, check_sum in self.update_json_file_list.items():
-                installed_files += 1
+                installed_files += 1 # Add plus one to installed files
                 self.progress_bar_value.emit(int((installed_files / total_files) * 100))  # Update progress bar
-                if os.path.exists(self.main_self.main_path+path):
-                    if self.main_self.settings_app_file_list_file[path] == check_sum:
+                if os.path.exists(self.main_self.main_path+path): # Check if file from update exists in main folder
+                    if self.main_self.settings_app_file_list_file[path] == check_sum: # Check if file from update was changed, if no continue
                         continue
-                shutil.copy(self.main_self.main_path+self.update_folder[:-1]+path, self.main_self.main_path+path) # Copy, add file
+                shutil.copy(self.main_self.main_path+self.update_folder[:-1]+path, self.main_self.main_path+path) # Copy, add file, if file form update was changed
 
             for path in self.main_self.settings_app_file_list_file.keys():
-                if path not in self.update_json_file_list.keys():
-                    os.remove(self.main_self.main_path+path)  # Remove old file
+                if path not in self.update_json_file_list.keys(): # Check if old file is in update
+                    os.remove(self.main_self.main_path+path)  # Remove old file, if no in update
 
-            shutil.copy(self.main_self.main_path+self.update_folder[:-1]+'/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json')  # Copy, add file
+            shutil.copy(self.main_self.main_path+self.update_folder[:-1]+'/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json') # Change settings app list to this from update
             self.progress_bar_value.emit(100) # Debug, update progress bar to 100
             self.main_self.settings_app_file_list_file = json.load(open(self.main_self.main_path + '/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json','r'))  # Reload settings app file list
             shutil.rmtree(self.main_self.main_path + self.update_folder[:-1]) # Remove update folder
