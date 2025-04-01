@@ -1,20 +1,2 @@
-2025-04-01 08:33:02 Error: <class 'Exception'> 
- Traceback (most recent call last):
-  File "/home/admin/GIT/TickerK8/TickerK8_updater/APP_FILES/PYTHON/_11_main_Scripts.py", line 86, in setup_main_changelog
-    raise # If none
-    ^^^^^
-RuntimeError: No active exception to reraise
- 
-
-2025-04-01 08:33:07 Error: Files are not correct 
-
-2025-04-01 08:34:11 Error: <class 'Exception'> 
- Traceback (most recent call last):
-  File "/home/admin/GIT/TickerK8/TickerK8_updater/APP_FILES/PYTHON/_11_main_Scripts.py", line 86, in setup_main_changelog
-    raise # If none
-    ^^^^^
-RuntimeError: No active exception to reraise
- 
-
-2025-04-01 08:34:16 Error: Files are correct 
+2025-04-01 10:08:32 Error: Files are correct 
 
