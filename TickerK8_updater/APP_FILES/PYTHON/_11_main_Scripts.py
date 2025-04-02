@@ -975,7 +975,7 @@ class controller_report:
     def write_log(self, message):
         try: # Try write a log
             log_file = open(self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/log.txt', 'a') # Open log file
-            log_file.write(f"{datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")} Error: {message} \n\n") # Write error
+            log_file.write(f"{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')} Error: {message} \n\n") # Write error
             if self.main_self.settings_config_file['__auto_report__']: # Check if auto report to database
                 try: # Try send report to database
                     connect = mysql.connector.connect(  # Set Connect
