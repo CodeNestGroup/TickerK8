@@ -293,16 +293,10 @@ class controller_settings:
     """ Open Close sub widget"""
     def open_close_sub_widgets(self, to_open):
         try: # Try change opened widget.
-            if not self.opened_widget: # Check if none of sub widgets is opened
-                to_open.setHidden(False) # Show widget
-                self.opened_widget = to_open # Save opened widget
-            elif self.opened_widget == to_open: # Check if the same widget
+            if self.opened_widget: # Check if opened widget is not none
                 self.opened_widget.setHidden(True) # Hide opened widget
-                self.opened_widget = None # Reset to deafult
-            else:
-                self.opened_widget.setHidden(True) # Hide opened widget
-                to_open.setHidden(False) # Show Widget
-                self.opened_widget = to_open#  Save opened widget
+            to_open.setHidden(False) # Show Widget
+            self.opened_widget = to_open # Save opened widget
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])

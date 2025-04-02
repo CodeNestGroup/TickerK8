@@ -7,7 +7,7 @@
       ["Installing...", "Instalowanie..."],
       ["You have actuall version", "Masz aktualną wersje"],
       ["Files of udapte are inncorrect", "Pliki sa niepoprawne."],
-      ["Update stopped. Waiting for connection."]
+      ["Update stopped. Waiting for connection.", "Pobieranie zapauzowane. Oczekiwanie do połączenie."]
    ],
    "main_start_button": [["Open", "Otwórz"], ["Updating", "Aktualizowanie"]],
    "settings_exit_button": ["Exit", "Wyjście"],
@@ -66,13 +66,13 @@
          "Report sended suscesfully",
          "Files are correct"
       ],
-      [  "Nie mozna ustawic okna dzinnika zmian",
-         "Nie udalo sie otworzyc",
+      [  "Nie można ustawić okna dzinnika zmian",
+         "Nie udało sie otworzyć",
          "Otworzono",
-         "Blad polaczenie z internetem",
-         "Ustawienie zostalo zapisane",
-         "Masz aktualna wersje",
-         "Raport wyslany z sukcesem",
+         "Błąd połaczenia z internetem",
+         "Ustawienie zostało zapisane",
+         "Masz aktualną wersje",
+         "Raport wysłany z sukcesem",
          "Pliki są poprawne"
       ]
    ],
@@ -83,10 +83,10 @@
          "Files are not correct",
          "Files of udapte are inncorrect. \n Try download again."
       ],
-      [  "Cos nie tak z aplikacja, sprobuj sprawdzic kontatybilnosc plikow lub pobrac najnowsza wersje aplikacji",
-         "Masz stara wersje apliakcji \n Pobierz aktualizacje teraz \n\n Kliknij w guzik ponizej:",
-         "Pliki są nie poprawne",
-         "Pliki aplikacji sa niepoprawne. \n Spruboj pobrac jeszcze raz."
+      [  "Wystąpił problem z aplikacją. Sprawdź zgodność pliku lub pobierz najnowszą wersję.",
+         "Masz starą wersję aplikacji \n Pobierz aktualizację teraz \n\n Kliknij przycisk poniżej:",
+         "Pliki nie są poprawne",
+         "Pliki aplikacji są niepoprawne. \n Spróbuj pobrać jeszcze raz."
       ]
    ],
    "alert_download_button": ["Download", "Pobierz"],

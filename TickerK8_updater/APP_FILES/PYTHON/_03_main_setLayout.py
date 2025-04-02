@@ -87,14 +87,15 @@ def set_Layout(self):
     self.settings_sub_scroll_widget.setLayout(self.settings_sub_scroll_widget_layout)
 #_______________________________________________________________________________________________________________________
     """ Settings sub theme widget """
-    self.settings_theme_widget_layout.addWidget(self.settings_theme_title_label, 0, 0, 1, 100)
-    self.settings_theme_widget_layout.addWidget(self.settings_theme_d_n_label, 1, 0, 1, 50)
-    self.settings_theme_widget_layout.addWidget(self.settings_theme_d_n_button, 1, 50, 1, 50)
-    self.settings_theme_widget_layout.addWidget(self.settings_theme_list_label, 2, 0, 1, 50)
-    self.settings_theme_widget_layout.addWidget(self.settings_theme_list_combobox, 2, 50, 1, 50)
+    self.settings_theme_widget_layout.addWidget(self.settings_theme_title_label, 0, 0, 10, 100)
+    self.settings_theme_widget_layout.addWidget(self.settings_theme_d_n_label, 20, 0, 30, 50)
+    self.settings_theme_widget_layout.addWidget(self.settings_theme_d_n_button, 25, 50, 20, 50)
+    self.settings_theme_widget_layout.addWidget(self.settings_theme_list_label, 60, 0, 30, 50)
+    self.settings_theme_widget_layout.addWidget(self.settings_theme_list_combobox, 65, 50, 20, 50)
     self.settings_theme_widget_layout.setSpacing(0)
     self.settings_theme_widget_layout.setContentsMargins(0,0,0,0)
     for i in range(100):
+        self.settings_theme_widget_layout.setRowStretch(i, 1)
         self.settings_theme_widget_layout.setColumnStretch(i, 1)
     self.settings_theme_widget.setLayout(self.settings_theme_widget_layout)
 #_______________________________________________________________________________________________________________________
