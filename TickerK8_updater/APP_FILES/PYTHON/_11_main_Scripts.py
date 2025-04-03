@@ -59,52 +59,46 @@ class controller_main:
             self.main_self = main_self # Main self, main objects of application.
             self.main_self.controller_settings.set_translate()  # Setup text.
             self.main_self.controller_settings.set_theme() # Setup theme.
+            self.main_changelog_controller(signal=1) # Call.
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
             self.main_self.controller_alert.open()
 #_______________________________________________________________________________________________________________________
-    """ Setup main changelog """
-    def setup_main_changelog(self):
-        try: # Try open url, debug
-            self.main_self.main_changelog_scroll_widget = QWidget(self.main_self.main_changelog_scroll) # Create widget for main changelog scroll.
-            self.main_self.main_changelog_scroll_widget_layout = QVBoxLayout(self.main_self.main_changelog_scroll_widget) # Create layout for widget.
-            self.main_self.main_changelog_scroll_widget_layout.setSpacing(0)
-            self.main_self.main_changelog_scroll_widget_layout.setContentsMargins(0,0,0,0)
-            self.main_self.main_changelog_scroll_widget.setLayout(self.main_self.main_changelog_scroll_widget_layout) # Set Layout for main changlog widget.
-            try: # Try create button, that represents updates
-                releases_list = self.main_self.controller_update.get_releses() # Get releses list
-                if releases_list:
-                    for release in releases_list: # Get releses from github.
-                        button = QPushButton(self.main_self.main_changelog_scroll_widget) # Create button.
-                        button.setProperty('class', 'main_changelog_buttons') # Create class for button.
-                        button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding) # Set size of button.
-                        button.setText(release['name']) # Set text from.
-                        button.clicked.connect(lambda _, r=release: self.main_to_changlog(r)) # Open changelog
-                        self.main_self.main_changelog_scroll_widget_layout.addWidget(button) # Add button to layout.
-                else:
-                    raise # If none
-            except Exception: # Except if problem with setup widget
-                self.main_self.main_start_button.setDisabled(True) # Disabled open app
-                self.main_self.notification_text_label.setText(self.main_self.settings_translate_file['notification_text_label'][self.main_self.settings_config_file['__language__']][0])  # Set text of notification
-                self.main_self.controller_notification.open()  # Open notification
-                self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")  # Write notification
-                self.main_self.main_changelog_scroll_error_label = QLabel(self.main_self.main_changelog_scroll) # Create error label for main changlog
-                self.main_self.main_changelog_scroll_error_label.setObjectName('main_changelog_scroll_error_label') # Set name, id for css
-                self.main_self.main_changelog_scroll_error_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding) # Set Size
-                self.main_self.main_changelog_scroll_error_label.setText("Can't setup changlog widget") # Set text of error
-                self.main_self.main_changelog_scroll_error_label.setAlignment(Qt.AlignCenter)
-                self.main_self.main_changelog_scroll_error_label.setHidden(False) # Debug, enshoure to be no hidden.
-                self.main_self.main_changelog_scroll_widget_layout.addWidget(self.main_self.main_changelog_scroll_error_label) # Add error to widget
-                # Add auto reconnect func
-            self.main_self.main_changelog_scroll.setWidget(self.main_self.main_changelog_scroll_widget) # Set widget to scroll.
-        except Exception: # Except if problem with code
-            try: # If widget was created, delete
-                self.main_self.main_changelog_scroll_widget.deleteLater() # Delete widget
-            except: # If not pass
+    """ Main changelog controller """
+    def main_changelog_controller(self, signal):
+        try: # Try
+            try:
+                self.main_self.main_changelog_scroll_widget.deleteLater() # Delte main changelog scroll widget if exists.
+            except:
                 pass
+            if not signal: # Call error setup
+                self.main_self.main_changelog_error_widget.controller_error() # No connection.
+                self.main_self.notification_text_label.setText(self.main_self.settings_translate_file['notification_text_label'][self.main_self.settings_config_file['__language__']][3]) # Set text of notification
+                self.main_self.controller_notification.open() # Open notification
+                self.main_self.main_settings_social_media_discord_button.setDisabled(True) # Disabled button
+                self.main_self.main_settings_social_media_github_button.setDisabled(True)
+                self.main_self.main_settings_social_media_instagram_button.setDisabled(True) # Disabled button
+                self.main_self.main_start_button.setDisabled(True) # Disabled button
+                self.main_self.settings_update_option_check_button.setDisabled(True) # Disabled button
+                self.main_self.report_send_button.setDisabled(True) # Disabled button
+                self.main_self.update_changelog_download_button.setDisabled(True) # Disabled button
+            else: # Call setup changelog
+                self.main_self.main_changelog_error_widget.controller_loading() # Loadinf changelog.
+                self.main_self.main_settings_social_media_discord_button.setDisabled(False) # Enabled button
+                self.main_self.main_settings_social_media_github_button.setDisabled(False) # Enabled button
+                self.main_self.main_settings_social_media_instagram_button.setDisabled(False) # Enabled button
+                self.main_self.main_start_button.setDisabled(False) # Enabled button
+                self.main_self.settings_update_option_check_button.setDisabled(False) # Enabled button
+                self.main_self.report_send_button.setDisabled(False) # Enabled button
+                self.main_self.update_changelog_download_button.setDisabled(False) # Enabled button
+                
+            self.main_self.main_changelog_scroll.setHidden(True) # Hide main changelog scroll.
+            self.main_self.main_changelog_error_widget.setHidden(False) # Show main changelog error widget.
+
+        except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_filep['alert_text_label'][self.main_self.settings_config_file['__language__']][0]) # Set text of alert
+            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
             self.main_self.controller_alert.open()
 #_______________________________________________________________________________________________________________________
     """ Open Discord """
@@ -360,6 +354,7 @@ class controller_settings:
             """ Main widget """
 #_______________________________________________________________________________________________________________________
             """ Main changelog """
+            self.main_self.main_changelog_error_widget.loading_message_label.setText(self.main_self.settings_translate_file['main_changelog_error_widget'][0][self.main_self.settings_config_file['__language__']])
 #_______________________________________________________________________________________________________________________
             """ Main logo """
 #_______________________________________________________________________________________________________________________
@@ -592,26 +587,16 @@ class controller_update:
             self.main_self.controller_alert.open()
 #_______________________________________________________________________________________________________________________
     """ Get relaeses """
-    def get_releses(self):
-        try: # Try open url, debug
-            try: # Try connect
-                response = urllib.request.urlopen('https://api.github.com/repos/CodeNestGroup/TickerK8-Linux/releases') # Get latest relaeses from github
-            except Exception: # Except fail connection
-                self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-                self.main_self.notification_text_label.setText(self.main_self.settings_translate_file['notification_text_label'][self.main_self.settings_config_file['__language__']][3])
-                self.main_self.controller_notification.open()
-                return None
-            if response.getcode() == 200:
-                try: # Try open json file
-                    return json.loads(response.read().decode()) # Return json file
-                except Exception: # Except if something wrong
-                    self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-                    self.main_self.notification_text_label.setText(self.main_self.settings_translate_file['notification_text_label'][self.main_self.settings_config_file['__language__']][1])
-                    self.main_self.controller_notification.open()
-        except Exception: # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
+    class get_releses(QThread):
+        """ Init, creating items, set base variables like paths, screen size, etc. """
+        def __init__(self):
+            super().__init__()
+            self.start()
+        
+        def run(self):
+            release = urllib.request.urlopen('https://api.github.com/repos/CodeNestGroup/TickerK8-Linux/releases') # Get latest relaeses from github
+            return release if release.getCode() == 200 else None
+            
 #_______________________________________________________________________________________________________________________
     """ Set data """
     def set_data(self, data):
@@ -1129,77 +1114,23 @@ class controller_alert:
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
             self.main_self.controller_alert.open()
 ########################################################################################################################
-""" Controller reconnect """
-class controller_connect:
-    """ Init, creating items, set base variables like paths, screen size, etc. """
-    def __init__(self, main_self):
-        try:  # Setup deafolut
-            super().__init__()
-            self.main_self = main_self  # Main self, main objects of application.
-            self.is_connect = False
-            self.ping = controller_ping()
-            self.ping.signal.connect(self.check_ping)
-        except Exception:  # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
-#_______________________________________________________________________________________________________________________
-    """ Check ping """
-    def check_ping(self, value):
-        if value:
-            self.connection()
-        else:
-            self.no_connection()
-#_______________________________________________________________________________________________________________________
-    """ Connecttion """
-    def connection(self):
-        self.main_self.no_connection = False # For download
-        self.main_self.main_start_button.setEnabled(True)
-        self.main_self.main_settings_social_media_discord_button.setEnabled(True)
-        self.main_self.main_settings_social_media_github_button.setEnabled(True)
-        self.main_self.main_settings_social_media_instagram_button.setEnabled(True)
-        self.main_self.settings_update_option_check_button.setEnabled(True)
-        self.main_self.report_send_button.setEnabled(True)
-        self.main_self.update_changelog_download_button.setEnabled(True)
-        try: # If main changelog scroll widget is delete.
-            self.main_self.main_changelog_scroll_widget.deleteLater()
-        except: # If no, pass.
-            pass
-        self.main_self.controller_main.setup_main_changelog()
-#_______________________________________________________________________________________________________________________
-    """ No connection"""
-    def no_connection(self):
-        self.main_self.no_connection = True # For download
-        self.main_self.main_start_button.setDisabled(True)
-        self.main_self.main_settings_social_media_discord_button.setDisabled(True)
-        self.main_self.main_settings_social_media_github_button.setDisabled(True)
-        self.main_self.main_settings_social_media_instagram_button.setDisabled(True)
-        self.main_self.settings_update_option_check_button.setDisabled(True)
-        self.main_self.report_send_button.setDisabled(True)
-        self.main_self.update_changelog_download_button.setDisabled(True)
-        try:  # If main changelog scroll widget is delete.
-            self.main_self.main_changelog_scroll_widget.deleteLater()
-        except:  # If no, pass.
-            pass
-        self.main_self.controller_main.setup_main_changelog()
-#_______________________________________________________________________________________________________________________
 """ Controller ping """
 class controller_ping(QThread):
-    signal = pyqtSignal(int)
+    signal = pyqtSignal(bool) # Signal of connect.
+    """ Init, creating items, set base variables like paths, screen size, etc. """
     def __init__(self):
-        super().__init__()
-        self.is_connect = False
-        self.start()
-    def run(self):
-        while True:
-            try:
-                requests.get("https://8.8.8.8")
-                if not self.is_connect:
-                    self.signal.emit(1)
-                    self.is_connect = True
-            except Exception:
-                if self.is_connect:
-                    self.signal.emit(0)
-                    self.is_connect = False
-            time.sleep(5)
+        super().__init__() # Call functions.
+        self.is_connect = True # Is connect variable.
+    def run(self): # Run function.
+        while True: # Loop
+            try: # Try
+                requests.get("https://8.8.8.8") # Pinf to google.
+                if not self.is_connect: # Check if already has no connection.
+                    self.is_connect = True # Set True.
+                    self.signal.emit(self.is_connect) # Emit signal.
+            except Exception: # Exception.
+                if self.is_connect: # Check if already has connection.
+                    self.is_connect = False # Set False .
+                    self.signal.emit(self.is_connect) # Emit signal.
+            time.sleep(5) # Wait 5s.
 ########################################################################################################################

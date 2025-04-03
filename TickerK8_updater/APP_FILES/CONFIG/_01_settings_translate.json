@@ -1,4 +1,8 @@
-{
+{  
+   "main_changelog_error_widget": [
+      ["No connection.", "Brak połączenia"],
+      ["Loading", "Ładowanie"]
+   ],
    "main_update_label": [
       ["Starting download...", "Uruchamianie pobierania..."],
       ["Downloading...","Pobieranie..."],

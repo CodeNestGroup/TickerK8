@@ -5,7 +5,7 @@
     background-color: #1e1e1e;
     border: 0;
 }
-#main_changelog_widget{
+#main_changelog_scroll_widget{
     background-color: #00000000;
     border: 0;
 }
@@ -31,6 +31,27 @@
 .main_changelog_buttons:hover{
     background-color: #031913;
 }
+
+#main_changelog_error_widget{
+    background-color: red;
+}
+#icon_label{
+    background-color: #00000000;
+}
+#loading_message_label{
+    color: #FAFAFA;
+    background-color: #00000000;
+    border: 0;
+    padding: 0.5em;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+}
+.loading_dot_label{
+    background-color: #faf7f0;
+    border-radius: 0.499em;
+}
+
 
 #main_settings_widget{
     background-color: #252525;

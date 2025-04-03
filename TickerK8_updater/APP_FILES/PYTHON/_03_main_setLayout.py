@@ -10,6 +10,7 @@ def set_Layout(self):
     self.setLayout(self.layout)
 #_______________________________________________________________________________________________________________________
     """ Main widget """
+    self.main_widget_layout.addWidget(self.main_changelog_error_widget, 0, 0, 90, 50)
     self.main_widget_layout.addWidget(self.main_changelog_scroll, 0, 0, 90, 50)
     self.main_widget_layout.addLayout(self.main_logo_layout, 0, 50, 35, 50)
     self.main_widget_layout.addLayout(self.main_settings_layout, 35, 50, 40, 50)
