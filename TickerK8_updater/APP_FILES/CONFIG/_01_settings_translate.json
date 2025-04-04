@@ -4,16 +4,22 @@
       ["Loading", "Ładowanie"]
    ],
    "main_update_label": [
-      ["Starting download...", "Uruchamianie pobierania..."],
+      ["Creating backup...", "Tworzenie kopii zapasowej..."],
       ["Downloading...","Pobieranie..."],
       ["Unpacking...", "Rozpakowywanie..."],
       ["Checking compatibility...", "Sprawdzanie kontatybilności..."],
       ["Installing...", "Instalowanie..."],
+      ["Deleting backup...", "Usuwanie kopii zapasowej..."],
       ["You have actuall version", "Masz aktualną wersje"],
-      ["Files of udapte are inncorrect", "Pliki sa niepoprawne."],
-      ["Update stopped. Waiting for connection.", "Pobieranie zapauzowane. Oczekiwanie do połączenie."]
+      ["Update stopped. Waiting for connection.", "Pobieranie zapauzowane. Oczekiwanie do połączenie."],
+      ["Files of udapte are inncorrect", "Pliki sa niepoprawne."]
    ],
-   "main_start_button": [["Open", "Otwórz"], ["Updating", "Aktualizowanie"]],
+   "main_start_button": [
+      ["Open", "Otwórz"],
+      ["Updating", "Aktualizowanie"],
+      ["No connection.", "Brak połączenia"]
+   
+   ],
    "settings_exit_button": ["Exit", "Wyjście"],
    "settings_menu_theme_button": ["Theme", "Motyw"],
    "settings_menu_sound_button": ["Sound", "Dźwięk"],
@@ -40,7 +46,10 @@
    "settings_update_option_autoupdate_title_label": ["Auto update:", "Automatyczna aktualizacja:"],
    "settings_update_option_autoupdate_button": [["Disabled", "Enabled"], ["Wyłączone","Włączone"]],
    "settings_update_option_check_title_label": ["Check update:", "Sprawdź aktualizacje:"],
-   "settings_update_option_check_button": ["Check", "Sprawdź"],
+   "settings_update_option_check_button": [
+      ["Check", "Sprawdź"],
+      ["Checking...", "Sprawdzam..."]
+   ],
    "settings_update_advanced_subtitle_label": ["Advanced", "Zaawansowane"],
    "settings_update_advanced_capacity_title_label": ["Capacity:", "Przepustowość:"],
    "settings_update_advanced_verification_title_label": ["File verification:", "Weryfikacja plików:"],
@@ -85,12 +94,14 @@
       [  "Something wrong with application, try to check file compatibility or download newest version.",
          "You have old version of aplication \n Downalod update now \n\n Click button below:",
          "Files are not correct",
-         "Files of udapte are inncorrect. \n Try download again."
+         "Files of udapte are inncorrect. \n Try download again.",
+         "No backup folder."
       ],
       [  "Wystąpił problem z aplikacją. Sprawdź zgodność pliku lub pobierz najnowszą wersję.",
          "Masz starą wersję aplikacji \n Pobierz aktualizację teraz \n\n Kliknij przycisk poniżej:",
          "Pliki nie są poprawne",
-         "Pliki aplikacji są niepoprawne. \n Spróbuj pobrać jeszcze raz."
+         "Pliki aplikacji są niepoprawne. \n Spróbuj pobrać jeszcze raz.",
+         "Brak folderu kopii zapasowej."
       ]
    ],
    "alert_download_button": ["Download", "Pobierz"],

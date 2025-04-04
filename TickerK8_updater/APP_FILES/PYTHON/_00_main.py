@@ -227,7 +227,7 @@ class Main_window(QWidget): # Create main window, widget.
         set_Connect(self)  # Set connect buttons to functions.
 #_______________________________________________________________________________________________________________________
         """ Ping """
-        self.ping = controller_ping() # Controller ping.
+        self.ping = controller_ping(self) # Controller ping.
         self.ping.signal.connect(self.controller_main.main_changelog_controller) # Connect main changelog.
         self.ping.start() # Start thread.
 ########################################################################################################################

@@ -154,7 +154,6 @@ class main_changelog_error_widget(QWidget):
         self.loading_message_label = QLabel(self) # Message label
         self.animation = None
         self.setup() # Setup widget
-        self.set_grahpic() # Set graphic
 #______________________________________________________________________________________________________________________
     def setup(self):
         """ Set Object Name """
@@ -183,17 +182,6 @@ class main_changelog_error_widget(QWidget):
         self.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.icon_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.loading_message_label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-#______________________________________________________________________________________________________________________
-    """ Set Graphics """
-    def set_grahpic(self):
-        renderer = QSvgRenderer(self.main_self.main_path+self.main_self.settings_icon_file['icon_label'][self.main_self.settings_config_file['__theme__']]) # Render svg
-        pixmap = QPixmap(192, 192) # Create pixmap
-        pixmap.fill(Qt.transparent) # Transparent
-        painter = QPainter(pixmap) # Render graphic 
-        renderer.render(painter) # Render graphic
-        painter.end() # Render graphic
-        scaled_pixmap = pixmap.scaled(QSize(192, 192), Qt.KeepAspectRatio, Qt.SmoothTransformation) # Scal pixmap
-        self.icon_label.setPixmap(scaled_pixmap) # Set graphic 
 #______________________________________________________________________________________________________________________
     """ Controller error """
     def controller_error(self):

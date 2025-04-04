@@ -4,6 +4,7 @@ import os  # OS-related operations (paths, directories, environment variables, e
 import shutil  # File and directory manipulation (copying, moving, deleting)
 import subprocess  # Running external system processes
 import traceback # For save error in logs
+import socket # For ping.
 #_______________________________________________________________________________________________________________________
 """ Import date and time modules """
 import datetime  # Handling dates and times
@@ -59,7 +60,7 @@ class controller_main:
             self.main_self = main_self # Main self, main objects of application.
             self.main_self.controller_settings.set_translate()  # Setup text.
             self.main_self.controller_settings.set_theme() # Setup theme.
-            self.main_changelog_controller(signal=1) # Call.
+            self.main_setup_changelog_thread = None
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
@@ -75,6 +76,7 @@ class controller_main:
             if not signal: # Call error setup
                 self.main_self.main_changelog_error_widget.controller_error() # No connection.
                 self.main_self.notification_text_label.setText(self.main_self.settings_translate_file['notification_text_label'][self.main_self.settings_config_file['__language__']][3]) # Set text of notification
+                self.main_self.main_start_button.setText(self.main_self.settings_translate_file['main_start_button'][2][self.main_self.settings_config_file['__language__']]) # Set text of main start button
                 self.main_self.controller_notification.open() # Open notification
                 self.main_self.main_settings_social_media_discord_button.setDisabled(True) # Disabled button
                 self.main_self.main_settings_social_media_github_button.setDisabled(True)
@@ -85,6 +87,7 @@ class controller_main:
                 self.main_self.update_changelog_download_button.setDisabled(True) # Disabled button
             else: # Call setup changelog
                 self.main_self.main_changelog_error_widget.controller_loading() # Loadinf changelog.
+                self.main_self.main_start_button.setText(self.main_self.settings_translate_file['main_start_button'][0][self.main_self.settings_config_file['__language__']]) # Set text of main start button
                 self.main_self.main_settings_social_media_discord_button.setDisabled(False) # Enabled button
                 self.main_self.main_settings_social_media_github_button.setDisabled(False) # Enabled button
                 self.main_self.main_settings_social_media_instagram_button.setDisabled(False) # Enabled button
@@ -92,7 +95,10 @@ class controller_main:
                 self.main_self.settings_update_option_check_button.setDisabled(False) # Enabled button
                 self.main_self.report_send_button.setDisabled(False) # Enabled button
                 self.main_self.update_changelog_download_button.setDisabled(False) # Enabled button
-                
+                self.main_setup_changelog_thread = self.main_self.controller_update.get_releses() # Create thread get release
+                self.main_setup_changelog_thread.changelog_fetched.connect(self.setup_main_changelog) # Connect func to setup Widget
+                self.main_setup_changelog_thread.finished.connect(self.setup_thread_clean) # Connect cleanup function
+                self.main_setup_changelog_thread.start() # Start Thread
             self.main_self.main_changelog_scroll.setHidden(True) # Hide main changelog scroll.
             self.main_self.main_changelog_error_widget.setHidden(False) # Show main changelog error widget.
 
@@ -100,6 +106,38 @@ class controller_main:
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
             self.main_self.controller_alert.open()
+#_______________________________________________________________________________________________________________________
+    """ Setup main changelog """
+    def setup_main_changelog(self, date_releses):
+        try: # Try setup widget
+            self.main_self.main_changelog_scroll_widget = QWidget(self.main_self.main_changelog_scroll) # Create widget for main changelog scroll
+            self.main_self.main_changelog_scroll_widget_layout = QVBoxLayout(self.main_self.main_changelog_scroll_widget) # Create layout for widget.
+            self.main_self.main_changelog_scroll_widget_layout.setSpacing(0)
+            self.main_self.main_changelog_scroll_widget_layout.setContentsMargins(0,0,0,0)
+            self.main_self.main_changelog_scroll_widget.setLayout(self.main_self.main_changelog_scroll_widget_layout) # Set Layout for main changlog widget.
+            for release in date_releses: # Get releses from github.
+                button = QPushButton(self.main_self.main_changelog_scroll_widget) # Create button.
+                button.setProperty('class', 'main_changelog_buttons') # Create class for button.
+                button.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding) # Set size of button.
+                button.setText(release['name']) # Set text from.
+                button.clicked.connect(lambda _, r=release: self.main_to_changlog(r)) # Open changelog
+                self.main_self.main_changelog_scroll_widget_layout.addWidget(button) # Add button to layout.
+            self.main_self.main_changelog_scroll.setWidget(self.main_self.main_changelog_scroll_widget) # Set widget to scroll.
+            self.main_self.main_changelog_scroll.setHidden(False) # Hide main changelog scroll.
+            self.main_self.main_changelog_error_widget.setHidden(True) # Show main changelog error widget.
+        except Exception: # Except if problem with code
+            try: # If widget was created, delete
+                self.main_self.main_changelog_scroll_widget.deleteLater() # Delete widget
+            except: # If not pass
+                pass
+            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
+            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
+            self.main_self.controller_alert.open()
+#_______________________________________________________________________________________________________________________
+    """ Setup thread clean """
+    def setup_thread_clean(self):
+        self.main_setup_changelog_thread.deleteLater() # Delete thread get release
+        self.main_setup_changelog_thread = None # Set deafoult
 #_______________________________________________________________________________________________________________________
     """ Open Discord """
     def open_discord(self):
@@ -405,7 +443,7 @@ class controller_settings:
             self.main_self.settings_update_option_autoupdate_title_label.setText(self.main_self.settings_translate_file['settings_update_option_autoupdate_title_label'][index_language])
             self.main_self.settings_update_option_autoupdate_button.setText(self.main_self.settings_translate_file['settings_update_option_autoupdate_button'][index_language][self.main_self.settings_config_file['__auto_update__']])
             self.main_self.settings_update_option_check_title_label.setText(self.main_self.settings_translate_file['settings_update_option_check_title_label'][index_language])
-            self.main_self.settings_update_option_check_button.setText(self.main_self.settings_translate_file['settings_update_option_check_button'][index_language])
+            self.main_self.settings_update_option_check_button.setText(self.main_self.settings_translate_file['settings_update_option_check_button'][0][index_language])
             self.main_self.settings_update_advanced_subtitle_label.setText(self.main_self.settings_translate_file['settings_update_advanced_subtitle_label'][index_language])
             self.main_self.settings_update_advanced_capacity_title_label.setText(self.main_self.settings_translate_file['settings_update_advanced_capacity_title_label'][index_language])
             self.main_self.settings_update_advanced_capacity_combobox.setCurrentIndex(self.main_self.settings_config_file['__capacity__'])
@@ -458,6 +496,7 @@ class controller_settings:
             #self.main_self.main_logo_ticker_label.setPixmap(QIcon(self.main_self.file_app_path+_path_icon_file['main_logo_ticker_label']).pixmap(self.main_self.main_logo_ticker_label.size()))
 #_______________________________________________________________________________________________________________________
             """ Set iocns for buttons"""
+            self.main_self.main_changelog_error_widget.icon_label.setPixmap(self.load_svg(self.main_self.main_path+self.main_self.settings_icon_file['icon_label'][self.main_self.settings_config_file['__theme__']], 192, 192))
             self.main_self.main_settings_open_button.setIcon(QIcon(self.main_self.main_path+self.main_self.settings_icon_file['main_settings_open_button'][index_theme]))
             self.main_self.main_settings_open_button.setIconSize(self.main_self.main_settings_button_size)
             self.main_self.main_settings_social_media_instagram_button.setIcon(QIcon(self.main_self.main_path+self.main_self.settings_icon_file['main_settings_social_media_instagram_button'][index_theme]))
@@ -472,15 +511,16 @@ class controller_settings:
             self.main_self.controller_alert.open()
 #_______________________________________________________________________________________________________________________
     """ Load svg script """
-    def load_svg(self, svg_path, size):
+    def load_svg(self, svg_path, width, height):
         try: # Try create svg graphics
-            pixmap = QPixmap(size.width(), size.height())
-            pixmap.fill(Qt.transparent)  # Ustawia tło jako przezroczyste
-            renderer = QSvgRenderer(svg_path)
-            painter = QPainter(pixmap)
-            renderer.render(painter)
-            painter.end()
-            return pixmap
+            renderer = QSvgRenderer(svg_path) # Render svg
+            pixmap = QPixmap(width, height) # Create pixmap
+            pixmap.fill(Qt.transparent) # Transparent
+            painter = QPainter(pixmap) # Render graphic 
+            renderer.render(painter) # Render graphic
+            painter.end() # Render graphic
+            scaled_pixmap = pixmap.scaled(QSize(width, height), Qt.KeepAspectRatio, Qt.SmoothTransformation) # Scal pixmap
+            return scaled_pixmap
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
@@ -527,13 +567,20 @@ class controller_settings:
     """ Update, check updates """
     def check_updates(self):
         try: # Try check and setup update if is.
-            github_version = None
-            response = urllib.request.urlopen('https://api.github.com/repos/CodeNestGroup/TickerK8-Linux/releases/latest') # Open latest update from github
-            if response.getcode() == 200:
-                github_version = json.loads(response.read().decode())
-            else:
-                pass
-            if self.main_self.changelog_file['name'] != github_version['name']: # If not updated
+            self.main_self.settings_update_option_check_button.setText(self.main_self.settings_translate_file['settings_update_option_check_button'][1][self.main_self.settings_config_file['__language__']])
+            self.settings_check_updates_thread = self.main_self.controller_update.get_releses() # Create thread get release
+            self.settings_check_updates_thread.changelog_fetched.connect(self.check_updates_controller) # Connect func to setup Widget
+            self.settings_check_updates_thread.finished.connect(self.setup_thread_clean) # Connect cleanup function
+            self.settings_check_updates_thread.start() # Start Thread
+        except:
+            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
+            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
+            self.main_self.controller_alert.open()
+#______________________________________________________________________________________________________________________
+    """ Check updates controller """
+    def check_updates_controller(self, github_version):
+        try:
+            if self.main_self.changelog_file['name'] != github_version[0]['name']: # If not updated
                 self.main_self.controller_update.set_data(github_version) # Set date for update controller
                 self.main_self.controller_alert.open() # Open alet
                 self.main_self.alert_download_button.setHidden(False) # Show download button
@@ -546,6 +593,12 @@ class controller_settings:
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
             self.main_self.controller_alert.open()
+#_______________________________________________________________________________________________________________________
+    """ Setup thread clean """
+    def setup_thread_clean(self):
+        self.main_self.settings_update_option_check_button.setText(self.main_self.settings_translate_file['settings_update_option_check_button'][0][self.main_self.settings_config_file['__language__']])
+        self.settings_check_updates_thread.deleteLater() # Delete thread get release
+        self.settings_check_updates_thread = None # Set deafoult
 #_______________________________________________________________________________________________________________________
     """ Update, set capacity """
     def set_capacity(self):
@@ -588,14 +641,17 @@ class controller_update:
 #_______________________________________________________________________________________________________________________
     """ Get relaeses """
     class get_releses(QThread):
+        changelog_fetched = pyqtSignal(list)
         """ Init, creating items, set base variables like paths, screen size, etc. """
         def __init__(self):
             super().__init__()
             self.start()
-        
         def run(self):
-            release = urllib.request.urlopen('https://api.github.com/repos/CodeNestGroup/TickerK8-Linux/releases') # Get latest relaeses from github
-            return release if release.getCode() == 200 else None
+            try:
+                release = urllib.request.urlopen('https://api.github.com/repos/CodeNestGroup/TickerK8-Linux/releases') # Get latest relaeses from github
+                self.changelog_fetched.emit(json.loads(release.read().decode()))
+            except:
+                self.changelog_fetched.emit([])
             
 #_______________________________________________________________________________________________________________________
     """ Set data """
@@ -672,7 +728,7 @@ class controller_update:
     """ Update progress """
     def update_progress(self, value):
         try: # Try do steps of update
-            if value == 0:
+            if value == 0: # Setup, creta backup
                 self.main_self.main_start_button.setDisabled(True) # Set open button disabled
                 self.main_self.main_start_button.setText(self.main_self.settings_translate_file['main_start_button'][1][self.main_self.settings_config_file['__language__']])
                 self.main_self.controller_main.changlog_to_main() # Open Main page
@@ -680,35 +736,33 @@ class controller_update:
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][0][self.main_self.settings_config_file['__language__']]) # Set message
                 self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_progress.setHidden(False) # Show progress bar
-            elif value == 1:
+            elif value == 1: # Download
                 self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][1][self.main_self.settings_config_file['__language__']]) # Set message
-            elif value == 2:
+            elif value == 2: # Unzip
                 self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][2][self.main_self.settings_config_file['__language__']]) # Set message
-            elif value == 3:
+            elif value == 3: # Update compatibility
                 self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][3][self.main_self.settings_config_file['__language__']]) # Set message
-            elif value == 4:
+            elif value == 4: # Install
                 self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][4][self.main_self.settings_config_file['__language__']]) # Set message
-            elif value == 5:
+            elif value == 5: # Finalizng, delet backup folder
+                self.main_self.main_update_progress.setValue(0) # Reset progress bar
+                self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][5][self.main_self.settings_config_file['__language__']]) # Set message
+            elif value == 6: # Final setup
                 self.main_self.main_update_progress.setValue(0)  # Reset progress bar
                 self.main_self.main_update_progress.setHidden(True)  # Set hidden
                 self.main_self.main_start_button.setDisabled(False)  # Set button enabled
                 self.main_self.main_start_button.setText(self.main_self.settings_translate_file['main_start_button'][0][self.main_self.settings_config_file['__language__']])  # Set button
-                self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][5][self.main_self.settings_config_file['__language__']])  # Set message
-                self.main_self.controller_download.deleteLater()  # Delete update controller
-            elif value == 6:
-                self.main_self.controller_report.write_log(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-                self.main_self.main_update_progress.setValue(0) # Reset progress bar
-                self.main_self.main_update_progress.setHidden(True)  # Set hidden
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][6][self.main_self.settings_config_file['__language__']])  # Set message
-                self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][3]) # Set Alert message
-                self.main_self.controller_alert.open()
                 self.main_self.controller_download.deleteLater()  # Delete update controller
-            elif value == 7:
+            elif value == 10:
+                pass
+            elif value == 11: # No connection, waiting for reconnect.
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][7][self.main_self.settings_config_file['__language__']])  # Set message
+            elif value == 
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
@@ -727,8 +781,8 @@ class controller_update:
     def auto_update(self):
         try: # Try check if auto update enabled
             if self.main_self.settings_config_file['__auto_update__']: # Check if auto update is enable or disabled
-                self._data = self.main_self.controller_update.get_releses()[0] # Get latest version
-                if self.main_self.changelog_file['name'] != self._data['name']:
+                self._data = self.main_self.controller_update.get_releses() # Get latest version
+                if self.main_self.changelog_file['name'] != self._data[0]['name']:
                     self.update() # Call update function
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
@@ -775,51 +829,52 @@ class controller_update:
 """ Controller download """
 class controller_download(QThread):
     """ Signals """
-    try:
-        progress_index = pyqtSignal(int) # Progress, return actuall stage of update
-        progress_bar_value = pyqtSignal(int) # Progress, return value to progress bar
-    except Exception:  # Except if problem with code
-        self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-        self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-        self.main_self.controller_alert.open()
+    progress_index = pyqtSignal(int) # Progress, return actuall stage of update
+    progress_bar_value = pyqtSignal(int) # Progress, return value to progress bar
 #_______________________________________________________________________________________________________________________
     """ Init, creating items, set base variables like paths, screen size, etc. """
     def __init__(self, main_self, url):
-        try: # Try set deafoult
-            super().__init__()
-            self.url = url # URL adress
-            self.main_self = main_self
-            self.update_folder = None # Name of update folder
-            self.update_json_file_list = None # Update file list
-            self.zip_buffer = io.BytesIO() # Zip
-        except Exception:  # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
+        super().__init__()
+        self.url = url # URL adress
+        self.main_self = main_self
+        self.update_folder = None # Name of update folder
+        self.update_json_file_list = None # Update file list
+        self.zip_buffer = io.BytesIO() # Zip
 #_______________________________________________________________________________________________________________________
     """ Run """
     def run(self):
-        try: # Try call functions
-            self.start_setup() # Startup, show main page,
-            self.download() # Download update
-            self.un_zip() # Unzip downloded zip file
-            self.update_compatibility() # Update compatibility
-            self.install() # Install update
-            self.progress_index.emit(5) # Emit signal 5
-        except Exception:  # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
+        self.backup() # Startup, show main page,
+        time.sleep(0.5)
+        self.download() # Download update
+        time.sleep(0.5)
+        self.un_zip() # Unzip downloded zip file
+        time.sleep(0.5)
+        self.update_compatibility() # Update compatibility
+        time.sleep(0.5)
+        self.install() # Install update
+        time.sleep(0.5)
+        self.delete_backup() # Delte backup 
+        time.sleep(0.5)
+        self.progress_index.emit(6) # Emit signal 6
 
     #_______________________________________________________________________________________________________________________
     """ Start setup """
-    def start_setup(self):
+    def backup(self):
         try: # Try setup start
             self.progress_index.emit(0) # Emit signal 0
-        except Exception:  # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
+            self.backup_folder = self.main_self.main_path+'/.backup'
+            if not os.path.exists(self.backup_folder): # Check if backup folder exists
+                os.mkdirs(self.backup_folder) # Make backup folder
+                for item in os.listdir(self.main_self.main_path): 
+                    source_item = os.path.join(self.main_self.main_path, item) # Set source item
+                    backup_item = os.path.join(self.backup_folder, item) # Set backup item
+                    if os.path.isdir(source_item): # Check if source item is folder
+                        shutil.copytree(source_item, backup_item) # Copy folder
+                    else:
+                        shutil.copy2(source_item, backup_item) # Copy file
+        except: 
+            self.progress_index.emit(10)
+            
 #_______________________________________________________________________________________________________________________
     """ Download """
     def download(self):
@@ -861,6 +916,7 @@ class controller_download(QThread):
                     self.progress_bar_value.emit(int((extracted_files/total_files)*100)) # Update progress bar
                 self.progress_bar_value.emit(100) # Debug, update progress bar to 100
         except Exception:  # Except if problem with code
+            self.restore_backup()
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
             self.main_self.controller_alert.open()
@@ -914,6 +970,47 @@ class controller_download(QThread):
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
             self.main_self.controller_alert.open()
+#______________________________________________________________________________________________________________________
+    """ Delete backup """
+    def delete_backup(self):
+        try:
+            self.progress_index.emit(5)
+            if os.path.exists(self.backup_folder): # Check if backup folder exists
+                shutil.rmtree(self.backup_folder) # Delete backup folder
+        except Exception:  # Except if problem with code
+            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
+            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
+            self.main_self.controller_alert.open()
+#______________________________________________________________________________________________________________________
+    """ Restore backup """
+    def restore_backup(self):
+        try:
+            self.progress_index.emit(10)
+            if not os.path.exists(self.backup_folder): # Check if backup folder exists.
+                self.main_self.controller_report.write_log(f"No backup folder") # Set message of error
+                self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][4]) # Set alert text
+                self.main_self.controller_alert.open() # Show alert 
+            else:
+                for item in os.listdir(self.backup_folder):
+                    source_item = os.path.join(self.main_self.main_path, item)
+                    backup_item = os.path.join(self.backup_folder, item)
+
+                    if os.path.exists(source_item):
+                        if os.path.isdir(source_item):
+                            shutil.rmtree(source_item)
+                        else:
+                            os.remove(source_item)
+
+                    if os.path.isdir(backup_item):
+                        shutil.copytree(backup_item, source_item)
+                    else:
+                        shutil.copy2(backup_item, source_item)
+
+        except Exception:  # Except if problem with code
+            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
+            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
+            self.main_self.controller_alert.open()
+
 #_______________________________________________________________________________________________________________________
     """ Set capacity """
     def set_speed(self, index):
@@ -968,7 +1065,7 @@ class controller_report:
                     connect.commit()  # Save
                     connect.close()  # Close connection
                 except: # Execpet if something wrong with sending to database
-                    pass
+                    self.main_self.ping.single_ping()
         except Exception:  # Except if problem with code
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
             self.main_self.controller_alert.open()
@@ -993,9 +1090,7 @@ class controller_report:
                 self.main_self.notification_text_label.setText(self.main_self.settings_translate_file['notification_text_label'][self.main_self.settings_config_file['__language__']][6])  # Set notification message
                 self.main_self.controller_notification.open()  # Open notification
             except: # Execpet if something wrong with sending to database
-                self.main_self.notification_background_widget.setHidden(False) # Show notification
-                self.main_self.notification_text_label.setText(self.main_self.settings_translate_file['notification_text_label'][self.main_self.settings_config_file['__language__']][3])  # Set notification message
-                self.main_self.controller_notification.open()  # Open notification
+                self.main_self.ping.single_ping()
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
@@ -1118,19 +1213,37 @@ class controller_alert:
 class controller_ping(QThread):
     signal = pyqtSignal(bool) # Signal of connect.
     """ Init, creating items, set base variables like paths, screen size, etc. """
-    def __init__(self):
-        super().__init__() # Call functions.
-        self.is_connect = True # Is connect variable.
+    def __init__(self, main_self):
+        try:
+            super().__init__() # Call functions.
+            self.is_connect = False # Is connect variable.
+            self.main_self = main_self # Main self.
+        except Exception:
+            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
+            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
+            self.main_self.controller_alert.open()
+#_______________________________________________________________________________________________________________________
+    """ Run ping loop """
     def run(self): # Run function.
         while True: # Loop
+            self.single_ping()
+            time.sleep(5) # Wait 5s.
+#_______________________________________________________________________________________________________________________
+    """ Single ping """
+    def single_ping(self):
+        try:
             try: # Try
-                requests.get("https://8.8.8.8") # Pinf to google.
-                if not self.is_connect: # Check if already has no connection.
+                socket.setdefaulttimeout(3) # Set socket time out
+                socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect(("8.8.8.8", 53)) # Send ping
+                if self.is_connect == False: # Check if already has no connection.
                     self.is_connect = True # Set True.
                     self.signal.emit(self.is_connect) # Emit signal.
-            except Exception: # Exception.
-                if self.is_connect: # Check if already has connection.
+            except socket.error: # Exception.
+                if self.is_connect == True: # Check if already has connection.
                     self.is_connect = False # Set False .
                     self.signal.emit(self.is_connect) # Emit signal.
-            time.sleep(5) # Wait 5s.
+        except Exception:
+            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
+            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
+            self.main_self.controller_alert.open()
 ########################################################################################################################

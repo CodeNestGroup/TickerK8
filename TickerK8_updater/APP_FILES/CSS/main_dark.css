@@ -31,9 +31,8 @@
 .main_changelog_buttons:hover{
     background-color: #031913;
 }
-
 #main_changelog_error_widget{
-    background-color: red;
+    background-color: #252525;
 }
 #icon_label{
     background-color: #00000000;
@@ -47,16 +46,9 @@
     font-weight: 600;
     letter-spacing: 0.3em;
 }
-.loading_dot_label{
-    background-color: #faf7f0;
-    border-radius: 0.499em;
-}
-
-
 #main_settings_widget{
     background-color: #252525;
 }
-
 .main_settings_buttons{
     background-color: #1e1e1e;
     border: 0;
