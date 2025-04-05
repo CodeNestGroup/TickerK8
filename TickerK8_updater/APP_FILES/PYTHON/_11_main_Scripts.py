@@ -581,7 +581,7 @@ class controller_settings:
     def check_updates_controller(self, github_version):
         try:
             if self.main_self.changelog_file['name'] != github_version[0]['name']: # If not updated
-                self.main_self.controller_update.set_data(github_version) # Set date for update controller
+                self.main_self.controller_update.set_data(github_version[0]) # Set date for update controller
                 self.main_self.controller_alert.open() # Open alet
                 self.main_self.alert_download_button.setHidden(False) # Show download button
                 self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][1]) # Set message of alert
