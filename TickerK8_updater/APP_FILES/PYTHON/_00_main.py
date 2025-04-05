@@ -47,7 +47,6 @@ class Main_window(QWidget): # Create main window, widget.
         self.screen_size = QGuiApplication.primaryScreen().size() # Get screen size.
         self.main_settings_button_size = QSize(int(self.width() // 6), int(self.height() // 6)) # Set size for button icons.
         self.main_path = str(pathlib.Path(__file__).resolve().parents[3]) # Set main path, path to TickerK8 folder.
-        self.no_connection = False  # For download
 #_______________________________________________________________________________________________________________________
         """ Load json files, configs"""
         self.settings_config_file = json.load(open(self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_00_settings_config.json', 'r')) # Load settings config file, static.

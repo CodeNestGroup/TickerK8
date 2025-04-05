@@ -11,12 +11,13 @@
       ["Installing...", "Instalowanie..."],
       ["Deleting backup...", "Usuwanie kopii zapasowej..."],
       ["You have actuall version", "Masz aktualną wersje"],
-      ["Update stopped. Waiting for connection.", "Pobieranie zapauzowane. Oczekiwanie do połączenie."],
-      ["Files of udapte are inncorrect", "Pliki sa niepoprawne."]
+      ["Update failed", "Błąd aktualizacji"],
+      ["Update stopped. Waiting for connection.", "Pobieranie zapauzowane. Oczekiwanie do połączenie."]
    ],
    "main_start_button": [
       ["Open", "Otwórz"],
       ["Updating", "Aktualizowanie"],
+      ["Update failed", "Błąd aktualizacji"],
       ["No connection.", "Brak połączenia"]
    
    ],

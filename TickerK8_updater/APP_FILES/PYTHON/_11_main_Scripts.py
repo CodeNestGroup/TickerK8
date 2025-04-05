@@ -737,19 +737,14 @@ class controller_update:
                 self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_progress.setHidden(False) # Show progress bar
             elif value == 1: # Download
-                self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][1][self.main_self.settings_config_file['__language__']]) # Set message
             elif value == 2: # Unzip
-                self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][2][self.main_self.settings_config_file['__language__']]) # Set message
             elif value == 3: # Update compatibility
-                self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][3][self.main_self.settings_config_file['__language__']]) # Set message
             elif value == 4: # Install
-                self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][4][self.main_self.settings_config_file['__language__']]) # Set message
             elif value == 5: # Finalizng, delet backup folder
-                self.main_self.main_update_progress.setValue(0) # Reset progress bar
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][5][self.main_self.settings_config_file['__language__']]) # Set message
             elif value == 6: # Final setup
                 self.main_self.main_update_progress.setValue(0)  # Reset progress bar
@@ -758,11 +753,14 @@ class controller_update:
                 self.main_self.main_start_button.setText(self.main_self.settings_translate_file['main_start_button'][0][self.main_self.settings_config_file['__language__']])  # Set button
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][6][self.main_self.settings_config_file['__language__']])  # Set message
                 self.main_self.controller_download.deleteLater()  # Delete update controller
-            elif value == 10:
-                pass
-            elif value == 11: # No connection, waiting for reconnect.
+            elif value == 10: # Error 
+                self.main_self.main_update_progress.setValue(0) # Reset progress bar
+                self.main_self.main_update_progress.setHidden(True)  # Set hidden
+                self.main_self.main_start_button.setText(self.main_self.settings_translate_file['main_start_button'][2][self.main_self.settings_config_file['__language__']])  # Set button
                 self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][7][self.main_self.settings_config_file['__language__']])  # Set message
-            elif value == 
+                self.main_self.controller_download.deleteLater()  # Delete update controller
+            elif value == 11: # No connection, waiting for reconnect.
+                self.main_self.main_update_label.setText(self.main_self.settings_translate_file['main_update_label'][8][self.main_self.settings_config_file['__language__']])  # Set message
         except Exception:  # Except if problem with code
             self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
             self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
@@ -857,14 +855,14 @@ class controller_download(QThread):
         time.sleep(0.5)
         self.progress_index.emit(6) # Emit signal 6
 
-    #_______________________________________________________________________________________________________________________
+#______________________________________________________________________________________________________________________
     """ Start setup """
     def backup(self):
         try: # Try setup start
             self.progress_index.emit(0) # Emit signal 0
             self.backup_folder = self.main_self.main_path+'/.backup'
             if not os.path.exists(self.backup_folder): # Check if backup folder exists
-                os.mkdirs(self.backup_folder) # Make backup folder
+                os.mkdir(self.backup_folder) # Make backup folder
                 for item in os.listdir(self.main_self.main_path): 
                     source_item = os.path.join(self.main_self.main_path, item) # Set source item
                     backup_item = os.path.join(self.backup_folder, item) # Set backup item
@@ -872,8 +870,11 @@ class controller_download(QThread):
                         shutil.copytree(source_item, backup_item) # Copy folder
                     else:
                         shutil.copy2(source_item, backup_item) # Copy file
-        except: 
+        except:
             self.progress_index.emit(10)
+            if os.path.exists(self.backup_folder): # Check if backup folder exists
+                shutil.rmtree(self.backup_folder) # Delte backup folder
+            raise
             
 #_______________________________________________________________________________________________________________________
     """ Download """
@@ -884,22 +885,44 @@ class controller_download(QThread):
                 self.response = requests.get(self.url, stream=True, timeout=10) # Get zip
                 self.response.raise_for_status() # Raise error
             except: # Except, debug
-                pass
+                self.progress_index.emit(10)
+                if os.path.exists(self.backup_folder): # Check if backup folder exists
+                    shutil.rmtree(self.backup_folder) # Delte backup folder
+                raise
             chunk_size = 8192 # Chunk siize
             downloded = 0 # Set deafoult
-            for chunk in self.response.iter_content(chunk_size=chunk_size):
-                while self.main_self.no_connection: # While no connection with internet
-                    self.progress_index.emit(7)
-                    time.sleep(1) # Wait 1 s
-                self.progress_index.emit(1)  # Emit signal 1
-                self.zip_buffer.write(chunk) # Safe zip
-                downloded += len(chunk) # Add size of downaloded
-                self.progress_bar_value.emit(downloded) # Emit signal to update progress bar
-                time.sleep(len(chunk)/(self.set_speed(self.main_self.settings_config_file['__capacity__'])*1024)) # Adjust capacity
-        except Exception:  # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
+            chunk_generator = self.response.iter_content(chunk_size=chunk_size)
+            while True:
+                try:
+                    chunk = next(chunk_generator)
+                    if not chunk:
+                        continue
+                    self.progress_index.emit(1)  # Emit signal 1
+                    self.zip_buffer.write(chunk) # Safe zip
+                    downloded += len(chunk) # Add size of downaloded
+                    self.progress_bar_value.emit(downloded) # Emit signal to update progress bar
+                    time.sleep(len(chunk)/(self.set_speed(self.main_self.settings_config_file['__capacity__'])*1024)) # Adjust capacity
+                except StopIteration:
+                    break
+                except:
+                    self.progress_index.emit(11)
+                    while True:
+                        try:
+                            chunk = next(chunk_generator)
+                            if not chunk:
+                                continue
+                            self.progress_index.emit(1)
+                            break
+                        except:
+                            time.sleep(1)
+        except:
+            self.progress_index.emit(10)
+            if os.path.exists(self.backup_folder): # Check if backup folder exists
+                shutil.rmtree(self.backup_folder) # Delte backup folder
+            if self.zip_buffer: # Check if zip exists
+                self.zip_buffer.seek(0) # Delete zip file
+                self.zip_buffer.truncate(0) 
+            raise
 #_______________________________________________________________________________________________________________________
     """ Unzip """
     def un_zip(self):
@@ -915,11 +938,18 @@ class controller_download(QThread):
                     extracted_files += 1 # Add extracted file number
                     self.progress_bar_value.emit(int((extracted_files/total_files)*100)) # Update progress bar
                 self.progress_bar_value.emit(100) # Debug, update progress bar to 100
-        except Exception:  # Except if problem with code
-            self.restore_backup()
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
+                self.zip_buffer.seek(0) # Delte zip file
+                self.zip_buffer.truncate(0)
+        except:
+            self.progress_index.emit(10)
+            if os.path.exists(self.backup_folder): # Check if backup folder exists
+                shutil.rmtree(self.backup_folder) # Delte backup folder
+            if self.zip_buffer: # Check if zip exists
+                self.zip_buffer.seek(0) # Delete zip file
+                self.zip_buffer.truncate(0)
+            if os.path.exists(self.main_self.main_path+self.update_folder): # Check if update folder exists
+                shutil.rmtree(self.main_self.main_path+self.update_folder) # Delete update folder
+            raise
 #_______________________________________________________________________________________________________________________
     """ Update compatibility """
     def update_compatibility(self):
@@ -932,16 +962,17 @@ class controller_download(QThread):
                 if os.path.exists(self.main_self.main_path+self.update_folder[:-1]+file):
                     if check_sum != 'config':
                         if check_sum != self.main_self.controller_update.calculate_sha256(self.main_self.main_path+self.update_folder[:-1]+file):
-                            self.progress_index.emit(6)
-                            shutil.rmtree(self.main_self.main_path + self.update_folder)  # Remove update folder
-                            break
+                            raise
                         checked_file += 1 # Add checked file
                         self.progress_bar_value.emit(int((checked_file/total_files)*100)) # Update progress bar
             self.progress_bar_value.emit(100) # Debug, update progress bar to 100
-        except Exception:  # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
+        except:
+            self.progress_index.emit(10)
+            if os.path.exists(self.backup_folder): # Check if backup folder exists
+                shutil.rmtree(self.backup_folder) # Delte backup folder
+            if os.path.exists(self.main_self.main_path+self.update_folder): # Check if update folder exists
+                shutil.rmtree(self.main_self.main_path+self.update_folder) # Delete update folder
+            raise
 #_______________________________________________________________________________________________________________________
     """ Install """
     def install(self):
@@ -956,61 +987,42 @@ class controller_download(QThread):
                     if self.main_self.settings_app_file_list_file[path] == check_sum: # Check if file from update was changed, if no continue
                         continue
                 shutil.copy(self.main_self.main_path+self.update_folder[:-1]+path, self.main_self.main_path+path) # Copy, add file, if file form update was changed
-
             for path in self.main_self.settings_app_file_list_file.keys():
                 if path not in self.update_json_file_list.keys(): # Check if old file is in update
                     os.remove(self.main_self.main_path+path)  # Remove old file, if no in update
-
             shutil.copy(self.main_self.main_path+self.update_folder[:-1]+'/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json', self.main_self.main_path+'/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json') # Change settings app list to this from update
             self.progress_bar_value.emit(100) # Debug, update progress bar to 100
             self.main_self.settings_app_file_list_file = json.load(open(self.main_self.main_path + '/TickerK8_updater/APP_FILES/CONFIG/_04_settings_app_file_list.json','r'))  # Reload settings app file list
             shutil.rmtree(self.main_self.main_path + self.update_folder[:-1]) # Remove update folder
             self.main_self.controller_update.check_compatibility() # Call funcation that check compatibility of all files
-        except Exception:  # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
+        except:
+            self.progress_index.emit(10)
+            if os.path.exists(self.backup_folder): # Check if backup folder exists
+                self.restore_backup() # Call restore func
+            if os.path.exists(self.main_self.main_path+self.update_folder): # Check if update folder exists
+                shutil.rmtree(self.main_self.main_path+self.update_folder) # Delete update folder
+            raise
 #______________________________________________________________________________________________________________________
     """ Delete backup """
     def delete_backup(self):
-        try:
-            self.progress_index.emit(5)
-            if os.path.exists(self.backup_folder): # Check if backup folder exists
-                shutil.rmtree(self.backup_folder) # Delete backup folder
-        except Exception:  # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
+        self.progress_index.emit(5)
+        if os.path.exists(self.backup_folder): # Check if backup folder exists
+            shutil.rmtree(self.backup_folder) # Delete backup folder
 #______________________________________________________________________________________________________________________
     """ Restore backup """
     def restore_backup(self):
-        try:
-            self.progress_index.emit(10)
-            if not os.path.exists(self.backup_folder): # Check if backup folder exists.
-                self.main_self.controller_report.write_log(f"No backup folder") # Set message of error
-                self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][4]) # Set alert text
-                self.main_self.controller_alert.open() # Show alert 
+        for item in os.listdir(self.backup_folder):
+            source_item = os.path.join(self.main_self.main_path, item)
+            backup_item = os.path.join(self.backup_folder, item)
+            if os.path.exists(source_item): # Check if source item exists
+                if os.path.isdir(source_item): # Check if source item is folder
+                    shutil.rmtree(source_item) # Delete source item
+                else:
+                    os.remove(source_item) # Delete source item
+            if os.path.isdir(backup_item): # Check if backup item is folder
+                shutil.copytree(backup_item, source_item) # Restore file
             else:
-                for item in os.listdir(self.backup_folder):
-                    source_item = os.path.join(self.main_self.main_path, item)
-                    backup_item = os.path.join(self.backup_folder, item)
-
-                    if os.path.exists(source_item):
-                        if os.path.isdir(source_item):
-                            shutil.rmtree(source_item)
-                        else:
-                            os.remove(source_item)
-
-                    if os.path.isdir(backup_item):
-                        shutil.copytree(backup_item, source_item)
-                    else:
-                        shutil.copy2(backup_item, source_item)
-
-        except Exception:  # Except if problem with code
-            self.main_self.controller_report.write_log(f"{Exception} \n {traceback.format_exc()}")
-            self.main_self.alert_text_label.setText(self.main_self.settings_translate_file['alert_text_label'][self.main_self.settings_config_file['__language__']][0])
-            self.main_self.controller_alert.open()
-
+                shutil.copy2(backup_item, source_item) # Restore file
 #_______________________________________________________________________________________________________________________
     """ Set capacity """
     def set_speed(self, index):
